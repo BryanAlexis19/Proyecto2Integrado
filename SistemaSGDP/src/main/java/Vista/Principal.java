@@ -39,6 +39,7 @@ public class Principal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +137,8 @@ public class Principal extends javax.swing.JFrame {
 
         jButton4.setText("Ver registro de clientes");
 
+        jButton5.setText("BotonPrueba");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,11 +157,14 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(jButton3)
                                     .addComponent(jButton4)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(355, 355, 355)
+                        .addGap(346, 346, 346)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(536, 536, 536)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton5)))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -170,7 +176,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton5)
+                        .addGap(19, 19, 19)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
@@ -179,7 +187,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addGap(30, 30, 30)
                         .addComponent(jButton4)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -241,6 +249,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
