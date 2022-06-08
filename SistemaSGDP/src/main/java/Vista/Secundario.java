@@ -27,14 +27,14 @@ public class Secundario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        fSButtonMD4 = new LIB.FSButtonMD();
-        jButton1 = new javax.swing.JButton();
-        fSButtonMD3 = new LIB.FSButtonMD();
-        fSButtonMD2 = new LIB.FSButtonMD();
-        fSButtonMD1 = new LIB.FSButtonMD();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -44,10 +44,53 @@ public class Secundario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fSButtonMD4.setText("Registro de cliente");
-        fSButtonMD4.setColorNormal(new java.awt.Color(0, 204, 204));
-        fSButtonMD4.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
-        jPanel1.add(fSButtonMD4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 190, 50));
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Salida.png")); // NOI18N
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, -1, -1));
+
+        jButton5.setBackground(new java.awt.Color(0, 204, 204));
+        jButton5.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Ver registro de clientes");
+        jButton5.setBorder(null);
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 210, 50));
+
+        jButton4.setBackground(new java.awt.Color(0, 204, 204));
+        jButton4.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Registro de documentación");
+        jButton4.setBorder(null);
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 210, 50));
+
+        jButton2.setBackground(new java.awt.Color(0, 204, 204));
+        jButton2.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Revisión de documentos");
+        jButton2.setBorder(null);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 210, 50));
+
+        jLabel3.setFont(new java.awt.Font("Unispace", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("ELIJA LA FUNCIÓN A REALIZAR");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+
+        jButton3.setBackground(new java.awt.Color(0, 204, 204));
+        jButton3.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Registro Cliente");
+        jButton3.setToolTipText("");
+        jButton3.setBorder(null);
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 210, 50));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Futura Bk BT", 1, 14)); // NOI18N
@@ -59,41 +102,7 @@ public class Secundario extends javax.swing.JFrame {
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton1.setIconTextGap(0);
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 160, 50));
-
-        fSButtonMD3.setText("Ver registro de clientes");
-        fSButtonMD3.setColorNormal(new java.awt.Color(0, 204, 204));
-        fSButtonMD3.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
-        jPanel1.add(fSButtonMD3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 190, 50));
-
-        fSButtonMD2.setText("Revisión de documentos");
-        fSButtonMD2.setColorNormal(new java.awt.Color(0, 204, 204));
-        fSButtonMD2.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
-        jPanel1.add(fSButtonMD2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 190, 50));
-
-        fSButtonMD1.setText("Registro de documentación");
-        fSButtonMD1.setColorNormal(new java.awt.Color(0, 204, 204));
-        fSButtonMD1.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
-        fSButtonMD1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fSButtonMD1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(fSButtonMD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 220, 50));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 350, 20));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Salida.png")); // NOI18N
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Unispace", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ELIJA LA FUNCIÓN A REALIZAR");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 102, 102));
         jLabel2.setToolTipText("");
@@ -122,9 +131,9 @@ public class Secundario extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void fSButtonMD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fSButtonMD1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fSButtonMD1ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,11 +171,11 @@ public class Secundario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private LIB.FSButtonMD fSButtonMD1;
-    private LIB.FSButtonMD fSButtonMD2;
-    private LIB.FSButtonMD fSButtonMD3;
-    private LIB.FSButtonMD fSButtonMD4;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
