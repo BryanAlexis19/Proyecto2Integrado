@@ -27,7 +27,6 @@ public class Principal1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        fSButtonMD1 = new LIB.FSButtonMD();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -50,8 +49,6 @@ public class Principal1 extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
-
-        fSButtonMD1.setText("fSButtonMD1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -268,7 +265,6 @@ public class Principal1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private LIB.FSButtonMD fSButtonMD1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
