@@ -6,7 +6,7 @@ package Vista;
 
 /**
  *
- * @author user
+ * @author users
  */
 public class IndezPrincipal extends javax.swing.JFrame {
 
