@@ -7,11 +7,6 @@
         <Property name="text" type="java.lang.String" value="jLabel4"/>
       </Properties>
     </Component>
-    <Component class="LIB.FSButtonMD" name="fSButtonMD1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="fSButtonMD1"/>
-      </Properties>
-    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
