@@ -48,7 +48,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -176,18 +176,24 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Futura Bk BT" size="14" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\user\Desktop\Proyecto2\Proyecto2Integrado\SistemaSGDP\src\main\java\Imagenes\CerrarSesion.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="iconTextGap" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="190" y="350" width="160" height="50"/>
+              <AbsoluteConstraints x="210" y="350" width="160" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -201,7 +207,7 @@
         <Component class="javax.swing.JButton" name="jButton6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\theun\Downloads\GIT PROYECTS\Proyecto2\SistemaSGDP\src\main\java\com\images\Salida.png"/>
+              <Image iconType="2" name="C:\Users\user\Desktop\Proyecto2\Proyecto2Integrado\SistemaSGDP\src\main\java\Imagenes\Salida.png"/>
             </Property>
           </Properties>
           <Events>
@@ -209,7 +215,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="500" y="80" width="30" height="30"/>
+              <AbsoluteConstraints x="550" y="0" width="30" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -230,12 +236,12 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\theun\Downloads\GIT PROYECTS\Proyecto2\SistemaSGDP\src\main\java\com\images\Fondo.jpg"/>
+              <Image iconType="2" name="C:\Users\user\Desktop\Proyecto2\Proyecto2Integrado\SistemaSGDP\src\main\java\Imagenes\Fondo.jpg"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="580" height="420"/>
+              <AbsoluteConstraints x="0" y="0" width="580" height="460"/>
             </Constraint>
           </Constraints>
         </Component>
