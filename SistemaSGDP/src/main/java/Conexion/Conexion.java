@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Conexion {
-    String bd = "test";
+    String bd = "fovipol_db";
     String url= "jdbc:mysql://localhost:3306/";
     String user="root";
     String password = "";
