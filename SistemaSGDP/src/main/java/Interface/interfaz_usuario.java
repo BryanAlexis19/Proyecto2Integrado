@@ -8,5 +8,6 @@ public interface interfaz_usuario {
     
     List<modelo_usuario> ULista = new ArrayList();
     List<modelo_usuario> ULista();
+    boolean login (modelo_usuario usr);
     
 }
