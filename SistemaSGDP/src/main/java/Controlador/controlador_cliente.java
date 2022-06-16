@@ -47,6 +47,34 @@ public class controlador_cliente implements Interface.interfaz_cliente{
         return Lista;
     }
     
+    //Sobreescribir el metodo Buscarcliente de la interface
+    @Override
+    public List<modelo_cliente> BuscarCliente(modelo_cliente clie) {
+        List<modelo_cliente> Lista = new ArrayList();
+        try {
+            Connection cn = Conexion.conectar();
+            String sql = "SELECT CIP, DNI, Nombres, Apellidos, Grado, Estado, Dni_C FROM cliente where CIP = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, clie.getCip());
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                modelo_cliente modCli = new modelo_cliente();
+                modCli.setCip(rs.getInt(1));
+                modCli.setDni(rs.getString(2));
+                modCli.setNombre(rs.getString(3));
+                modCli.setApellido(rs.getString(4));
+                modCli.setGrado(rs.getString(5));
+                modCli.setEstado(rs.getInt(6));
+                modCli.setDni_c(rs.getString(7));
+                Lista.add(modCli);
+                System.out.print(modCli);
+            }
+            
+        }catch(SQLException x){
+        
+        }
+        return Lista;
+    }
   
     
 }
