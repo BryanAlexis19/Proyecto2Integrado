@@ -3,15 +3,15 @@ package Modelo;
 
 public class modelo_cliente {
 
-     private String cip;
+    private int cip;
     private String dni;
     private String apellido;
     private String nombre;
     private String grado;
-    private String estado;
+    private int estado;
     private String dni_c;
 
-    public modelo_cliente(String cip, String dni, String apellido, String nombre, String grado, String estado, String dni_c) {
+    public modelo_cliente(int cip, String dni, String apellido, String nombre, String grado, int estado, String dni_c) {
         this.cip = cip;
         this.dni = dni;
         this.apellido = apellido;
@@ -31,11 +31,11 @@ public class modelo_cliente {
         return "modelo_cliente{" + "cip=" + cip + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", grado=" + grado + ", estado=" + estado + ", dni_c=" + dni_c + '}';
     }
 
-    public String getCip() {
+    public int getCip() {
         return cip;
     }
 
-    public void setCip(String cip) {
+    public void setCip(int cip) {
         this.cip = cip;
     }
 
@@ -71,11 +71,11 @@ public class modelo_cliente {
         this.grado = grado;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 
