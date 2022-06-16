@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
+import Controlador.controlador_cliente;
+import Modelo.modelo_cliente;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -10,11 +13,28 @@ package Vista;
  */
 public class VerClientes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VerClientes
-     */
+    //Instanciar un objeto del controlador cliente
+    controlador_cliente cc = new controlador_cliente();
+    
     public VerClientes() {
         initComponents();
+    }
+    
+    //Metdodo para mostrar el listado de clientes en la tabla
+    void CliLIstado (){
+        //Crear un defaultTableModel y traer los campos de la tabla Jtable1
+        DefaultTableModel dtm = (DefaultTableModel)jTable1.getModel();
+        dtm.setRowCount(0);
+        //Recorrer la lista traida desde el controlador cliente con un foreach
+        for(modelo_cliente modCli: cc.CliLista()){
+            //Crear un array(vector) con los elementos de la lista de clientes
+            Object vector[] = {modCli.getCip(), modCli.getDni(), 
+                modCli.getNombre(), modCli.getApellido(), modCli.getGrado(), 
+                modCli.getEstado(), modCli.getDni_c()};
+            //Llenar la Jtable con los datos del vector
+            dtm.addRow(vector);            
+        }
+        
     }
 
     /**
@@ -78,6 +98,11 @@ public class VerClientes extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setFont(new java.awt.Font("Futura Bk BT", 1, 14)); // NOI18N
         jButton2.setText("Ver todos los clientes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -189,6 +214,10 @@ public class VerClientes extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        CliLIstado();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
