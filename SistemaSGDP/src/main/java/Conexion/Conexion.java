@@ -15,6 +15,26 @@ public class Conexion {
     String password = "";
     String driver = "com.mysql.cj.jdbc.Driver";
     Connection cx;
+    
+    
+    public static Connection getConnection(){
+        Connection con = null;
+        
+        try { 
+            Class.forName("com.mysql.cj.jdbc.Driver");
+             String url= "jdbc:mysql://localhost:3306/";
+            String user="root";
+             String password = "";
+            con=DriverManager.getConnection(url, user, password);
+            System.out.println("Se conecto a BD");
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println("No se conecto a BD") ;
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return con;
+        
+          
+      }
 
     public Conexion() {
 

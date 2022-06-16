@@ -1,7 +1,8 @@
 package Vista;
 
 import javax.swing.JOptionPane;
-
+import Modelo.modelo_usuario;
+import Controlador.*;
 public class Ingreso extends javax.swing.JFrame {
 
     public Ingreso() {
@@ -168,18 +169,35 @@ public class Ingreso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        String Usuario = "admin";
-        String Contraseña = "123";
+        controlador_usuario ct = new controlador_usuario();
+        modelo_usuario mu = new modelo_usuario();
         
         String Pass= new String (txtPassword.getPassword());
         
-       if (txtUsuario.getText().equals(Usuario) && Pass.equals((Contraseña))){
+          
+       if (!txtUsuario.getText().equals("") && !Pass.equals("")){
            
-           Principal1 q = new Principal1();
-           q.setVisible(true);
-           dispose();
+             mu.setUsuario(txtUsuario.getText());
+             mu.setContraseña(Pass);
+         
+           if(ct.login(mu)){
+               if(mu.getTipo() == 1){
+                 Secundario q = new Secundario();
+                 q.setVisible(true);
+                 this.dispose();   
+                 
+               } else {
+                 Validacion q = new Validacion();
+                 q.setVisible(true);
+                 this.dispose();  
+               
+               }
+           }else {
+               JOptionPane.showMessageDialog(this,"Datos incorrectos");
+           }
+          
         }else{
-           JOptionPane.showMessageDialog(this,"usuario / contraseña incorrecta");
+           JOptionPane.showMessageDialog(this,"Debe ingresar sus datos");
        }
         
     }//GEN-LAST:event_btnIngresarActionPerformed
