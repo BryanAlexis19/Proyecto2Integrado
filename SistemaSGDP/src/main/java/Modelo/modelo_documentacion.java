@@ -1,33 +1,49 @@
 package Modelo;
 
 public class modelo_documentacion {
-    private int codigo;
-    private String t_documento;
+    private int idDocumentacion,iipoDocumentacion,cip;
+    private String ubicacion;
 
-    public modelo_documentacion(int codigo, String t_documento) {
-        this.codigo = codigo;
-        this.t_documento = t_documento;
+    public modelo_documentacion() {
     }
 
-    public int getCodigo() {
-        return codigo;
+    public modelo_documentacion(int idDocumentacion, int iipoDocumentacion, int cip, String ubicacion) {
+        this.idDocumentacion = idDocumentacion;
+        this.iipoDocumentacion = iipoDocumentacion;
+        this.cip = cip;
+        this.ubicacion = ubicacion;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public int getIdDocumentacion() {
+        return idDocumentacion;
     }
 
-    public String getT_documento() {
-        return t_documento;
+    public void setIdDocumentacion(int idDocumentacion) {
+        this.idDocumentacion = idDocumentacion;
     }
 
-    public void setT_documento(String t_documento) {
-        this.t_documento = t_documento;
+    public int getIipoDocumentacion() {
+        return iipoDocumentacion;
     }
 
-    @Override
-    public String toString() {
-        return "modelo_documentacion{" + "codigo=" + codigo + ", t_documento=" + t_documento + '}';
+    public void setIipoDocumentacion(int iipoDocumentacion) {
+        this.iipoDocumentacion = iipoDocumentacion;
+    }
+
+    public int getCip() {
+        return cip;
+    }
+
+    public void setCip(int cip) {
+        this.cip = cip;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
     
     
