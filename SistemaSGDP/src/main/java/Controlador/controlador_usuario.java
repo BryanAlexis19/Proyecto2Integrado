@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import Modelo.*;
 import java.sql.Connection;
 import java.util.ArrayList;
+import Vista.*;
 
 public class controlador_usuario implements Interface.interfaz_usuario {
 
@@ -44,7 +45,7 @@ public class controlador_usuario implements Interface.interfaz_usuario {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection cn= Conexion.getConnection();
-        String sql="SELECT idUsuario,UserName,Password,Tipo FROM usuario WHERE Login=?";
+        String sql="SELECT idUsuario,UserName,Password,Tipo FROM usuario WHERE UserName=?";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, usr.getUsuario());
