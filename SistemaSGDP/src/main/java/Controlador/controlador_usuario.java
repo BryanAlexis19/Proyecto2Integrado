@@ -21,8 +21,8 @@ public class controlador_usuario implements Interface.interfaz_usuario {
     public List<modelo_usuario> ULista() {
        List<modelo_usuario> Lista = new ArrayList();
      try{
-       Connection cn= Conexion.getConnection();
-       String sql="SELECT idUsuario, UserName, Password, Tipo FROM usuario";
+       Connection cn = Conexion.getConnection();
+       String sql = "SELECT idUsuario, UserName, Password, Tipo FROM usuario";
        PreparedStatement st = cn.prepareStatement(sql);
        ResultSet rs= st.executeQuery();
        while (rs.next()){
@@ -32,6 +32,7 @@ public class controlador_usuario implements Interface.interfaz_usuario {
            x.setContraseña(rs.getString(3));
            x.setTipo(rs.getInt(4));
            Lista.add(x);
+           System.out.print(x);
        }
      }catch(SQLException x){}
      return Lista;
@@ -43,7 +44,7 @@ public class controlador_usuario implements Interface.interfaz_usuario {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection cn= Conexion.getConnection();
-        String sql="SELECT idUsuario, UserName, Password, Tipo FROM usuario WHERE Login =?";
+        String sql="SELECT idUsuario,UserName,Password,Tipo FROM usuario WHERE Login=?";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, usr.getUsuario());
