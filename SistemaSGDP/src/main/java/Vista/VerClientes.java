@@ -36,6 +36,19 @@ public class VerClientes extends javax.swing.JFrame {
         }
         
     }
+    
+    void BuscarCliente() {
+        modelo_cliente mc = new modelo_cliente();
+        mc.setCip(Integer.parseInt(jTextField1.getText()));
+        DefaultTableModel dtm = (DefaultTableModel)jTable1.getModel();
+        dtm.setRowCount(0);
+        for(modelo_cliente modCli: cc.BuscarCliente(mc)){
+            Object vector[] = {modCli.getCip(), modCli.getDni(),
+                modCli.getNombre(), modCli.getApellido(), modCli.getGrado(),
+                modCli.getEstado(), modCli.getDni_c()};
+            dtm.addRow(vector);
+            }        
+        }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -212,7 +225,7 @@ public class VerClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        BuscarCliente();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
