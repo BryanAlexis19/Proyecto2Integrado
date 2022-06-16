@@ -28,12 +28,11 @@ public class Secundario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVerRegistro = new javax.swing.JButton();
+        btnRegistroDocumentacion = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnRegistroC = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -53,60 +52,63 @@ public class Secundario extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, -1, -1));
 
-        jButton5.setBackground(new java.awt.Color(0, 204, 204));
-        jButton5.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Ver registro de clientes");
-        jButton5.setBorder(null);
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 210, 50));
-
-        jButton4.setBackground(new java.awt.Color(0, 204, 204));
-        jButton4.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Registro de documentación");
-        jButton4.setBorder(null);
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 210, 50));
-
-        jButton2.setBackground(new java.awt.Color(0, 204, 204));
-        jButton2.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Evaluación crediticia");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVerRegistro.setBackground(new java.awt.Color(0, 204, 204));
+        btnVerRegistro.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        btnVerRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerRegistro.setText("Ver registro de clientes");
+        btnVerRegistro.setBorder(null);
+        btnVerRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVerRegistroActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 210, 50));
+        jPanel1.add(btnVerRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 210, 50));
+
+        btnRegistroDocumentacion.setBackground(new java.awt.Color(0, 204, 204));
+        btnRegistroDocumentacion.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        btnRegistroDocumentacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistroDocumentacion.setText("Registro de documentación");
+        btnRegistroDocumentacion.setBorder(null);
+        btnRegistroDocumentacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroDocumentacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegistroDocumentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 210, 50));
 
         jLabel3.setFont(new java.awt.Font("Unispace", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ELIJA LA FUNCIÓN A REALIZAR");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(0, 204, 204));
-        jButton3.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Registro Cliente");
-        jButton3.setToolTipText("");
-        jButton3.setBorder(null);
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 210, 50));
-
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Futura Bk BT", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\CerrarSesion.png")); // NOI18N
-        jButton1.setText("Cerrar sesión");
-        jButton1.setToolTipText("");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton1.setIconTextGap(0);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistroC.setBackground(new java.awt.Color(0, 204, 204));
+        btnRegistroC.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        btnRegistroC.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistroC.setText("Registro Cliente");
+        btnRegistroC.setToolTipText("");
+        btnRegistroC.setBorder(null);
+        btnRegistroC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistroCActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 160, 50));
+        jPanel1.add(btnRegistroC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 210, 50));
+
+        btnCerrar.setBackground(new java.awt.Color(204, 204, 204));
+        btnCerrar.setFont(new java.awt.Font("Futura Bk BT", 1, 14)); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\CerrarSesion.png")); // NOI18N
+        btnCerrar.setText("Cerrar sesión");
+        btnCerrar.setToolTipText("");
+        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCerrar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCerrar.setIconTextGap(0);
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 160, 50));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 350, 20));
 
         jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Salida.png")); // NOI18N
@@ -144,17 +146,33 @@ public class Secundario extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
     dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+                 Ingreso q = new Ingreso();
+                 q.setVisible(true);
+                 this.dispose();  
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnRegistroCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroCActionPerformed
+                 RegistroDeClientes q = new RegistroDeClientes();
+                 q.setVisible(true);
+                 this.dispose();  
+    }//GEN-LAST:event_btnRegistroCActionPerformed
+
+    private void btnVerRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerRegistroActionPerformed
+                 VerClientes q = new VerClientes();
+                 q.setVisible(true);
+                 this.dispose();  
+    }//GEN-LAST:event_btnVerRegistroActionPerformed
+
+    private void btnRegistroDocumentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroDocumentacionActionPerformed
+                 Vista_RegistroDocumentario q = new Vista_RegistroDocumentario();
+                 q.setVisible(true);
+                 this.dispose();  
+    }//GEN-LAST:event_btnRegistroDocumentacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,11 +210,10 @@ public class Secundario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnRegistroC;
+    private javax.swing.JButton btnRegistroDocumentacion;
+    private javax.swing.JButton btnVerRegistro;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
