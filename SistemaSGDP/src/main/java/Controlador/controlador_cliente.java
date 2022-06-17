@@ -7,6 +7,8 @@ import Conexion.Conexion;
 import java.util.*;
 import java.sql.*;
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class controlador_cliente implements Interface.interfaz_cliente{
   
@@ -75,6 +77,31 @@ public class controlador_cliente implements Interface.interfaz_cliente{
         }
         return Lista;
     }
-  
-    
+
+    @Override
+    public int ingresoC(modelo_cliente ep) {
+        int respuesta =0;
+        try {
+            Connection con = Conexion.getConnection();
+            String sql = "INSERT INTO usuario (CIP, DNI, Nombres, Apellidos, Grado, Estado, Dni_C)"
+                + " VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, ep.getCip());
+            ps.setString(2, ep.getDni());
+            ps.setString(3, ep.getNombre());
+            ps.setString(4, ep.getApellido());
+            ps.setString(5, ep.getGrado());
+            ps.setInt(6, ep.getEstado());
+            ps.setString(7, ep.getDni_c());
+            respuesta = ps.executeUpdate();
+            
+                    
+                    
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return respuesta;
+    } 
+   
 }

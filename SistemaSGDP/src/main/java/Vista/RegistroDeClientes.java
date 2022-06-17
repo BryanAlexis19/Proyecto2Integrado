@@ -1,17 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vista;
 
+import Controlador.controlador_cliente;
 import Modelo.*;
+import javax.swing.JOptionPane;
 
 
 public class RegistroDeClientes extends javax.swing.JFrame {
 
    
-    
-    modelo_cliente m = new modelo_cliente();
+    int t =0;
+    controlador_cliente m = new controlador_cliente();
     
     public RegistroDeClientes() {
         initComponents();
@@ -153,12 +152,22 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         rbCasado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         rbCasado.setForeground(new java.awt.Color(255, 255, 255));
         rbCasado.setText("Casado");
+        rbCasado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbCasadoActionPerformed(evt);
+            }
+        });
 
         rbViudo.setBackground(new java.awt.Color(0, 153, 153));
         rbgEstadoCivil.add(rbViudo);
         rbViudo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         rbViudo.setForeground(new java.awt.Color(255, 255, 255));
         rbViudo.setText("Viudo");
+        rbViudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbViudoActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -321,7 +330,16 @@ public class RegistroDeClientes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                  
-            m.setCip(txtCip.getText());
+            modelo_cliente mc = new modelo_cliente();
+            mc.setCip(Integer.parseInt(txtCip.getText()));
+            mc.setDni(txtDni.getText());
+            mc.setApellido(txtApellido.getText());
+            mc.setNombre(txtNombre.getText());
+            mc.setGrado(txtGrado.getText());
+            mc.setEstado(1);
+            mc.setDni_c(txtDnic.getText());
+            m.ingresoC(mc);
+            
             
         
            /* cip = txtCip.getText();
@@ -351,8 +369,16 @@ public class RegistroDeClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDniActionPerformed
 
     private void rbSolterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSolterActionPerformed
-        // TODO add your handling code here:
+        t=1;
     }//GEN-LAST:event_rbSolterActionPerformed
+
+    private void rbCasadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCasadoActionPerformed
+        t=2;
+    }//GEN-LAST:event_rbCasadoActionPerformed
+
+    private void rbViudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbViudoActionPerformed
+        t=3;
+    }//GEN-LAST:event_rbViudoActionPerformed
 
     /**
      * @param args the command line arguments
