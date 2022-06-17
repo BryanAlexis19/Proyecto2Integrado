@@ -83,8 +83,7 @@ public class controlador_cliente implements Interface.interfaz_cliente{
         int respuesta =0;
         try {
             Connection con = Conexion.getConnection();
-            String sql = "INSERT INTO usuario (CIP, DNI, Nombres, Apellidos, Grado, Estado, Dni_C)"
-                + " VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO cliente (CIP, DNI, Nombres, Apellidos, Grado, Estado, Dni_C) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps = con.prepareStatement(sql);
             ps.setInt(1, ep.getCip());
