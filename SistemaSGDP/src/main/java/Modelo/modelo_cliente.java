@@ -87,5 +87,9 @@ public class modelo_cliente {
         this.dni_c = dni_c;
     }
        
+    public String V_Estado(){
+        String vector []  = {"", "Soltero", "Casado", "Viudo"};
+        return vector [estado];
+}
     
 }
