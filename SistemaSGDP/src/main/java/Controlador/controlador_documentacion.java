@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class controlador_documentacion implements Interface.interfaz_documentacion {
-    
-    //Metodo para mostrar documentacion
+
+    @Override
     public List<modelo_documentacion> DLista() {
-       List<modelo_documentacion> ListaD = new ArrayList();
+        List<modelo_documentacion> ListaD = new ArrayList();
        try{
        Connection cn = Conexion.getConnection();
        String sql = "SELECT idDocumentacion, TipoDocumentacion, Ubicacion,CIP Tipo FROM documentacion";
@@ -34,13 +34,4 @@ public class controlador_documentacion implements Interface.interfaz_documentaci
      return ListaD;
     }
 
-    @Override
-    public List<modelo_documentacion> ULista() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean login(modelo_documentacion usr) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

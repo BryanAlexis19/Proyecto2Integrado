@@ -4,6 +4,7 @@ package Controlador;
 
 import Modelo.modelo_cliente;
 import Conexion.Conexion;
+import Modelo.modelo_documentacion;
 import java.util.*;
 import java.sql.*;
 import java.sql.Connection;
@@ -102,5 +103,28 @@ public class controlador_cliente implements Interface.interfaz_cliente{
         }
         return respuesta;
     } 
+
+    @Override
+    public List<modelo_documentacion> filtrarArt(String an) {
+        List<modelo_documentacion> lista=new  ArrayList();
+            try{
+            Connection cn=Conexion.getConnection();
+            String sql="select idDocumentacion, TipoDocumentacion, Ubicacion, CIP from Documentacion where CIP=?";
+                PreparedStatement st=cn.prepareStatement(sql);
+                st.setString(1,an);
+                ResultSet rs=st.executeQuery();
+                while(rs.next()){
+                    modelo_documentacion n=new modelo_documentacion();
+                    n.setIdDocumentacion(rs.getInt(1));
+                    n.setIipoDocumentacion(rs.getInt(2));
+                    n.setUbicacion(rs.getString(3));
+                    n.setCip(rs.getInt(4));
+                    lista.add(n);
+                }
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
+        return lista;
+    }
    
 }
