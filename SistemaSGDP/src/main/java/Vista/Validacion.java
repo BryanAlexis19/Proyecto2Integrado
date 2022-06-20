@@ -6,14 +6,14 @@ import Modelo.*;
 
 
 public class Validacion extends javax.swing.JFrame {
-
-    
+    controlador_documentacion dos =new controlador_documentacion();
+    controlador_cliente ci = new controlador_cliente();
     controlador_usuario cu = new controlador_usuario();
-    
 
     public Validacion() {
         initComponents();
-        ulistado();
+        clistado();
+        Dlistado();
     }
     
     void ulistado (){
@@ -25,8 +25,24 @@ public class Validacion extends javax.swing.JFrame {
         }
         
     }
+    void clistado (){
+        DefaultTableModel dt = (DefaultTableModel)tabla1.getModel();
+        dt.setRowCount(0);
+        for(modelo_cliente x:ci.CliLista()){
+            Object v[] = {x.getCip(), x.getNombre(), x.getApellido()};
+            dt.addRow(v);
+        }
+        
+    }
+    void Dlistado (){
+        DefaultTableModel dt = (DefaultTableModel)tabla2.getModel();
+        dt.setRowCount(0);
+        for(modelo_documentacion x:dos.DLista()){
+            Object v[] = {x.getIdDocumentacion(),x.getIipoDocumentacion(),x.getUbicacion(),x.getCip()};
+            dt.addRow(v);
+        }
+    }
     
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,6 +77,11 @@ public class Validacion extends javax.swing.JFrame {
                 "CIP", "Nombres", "Apellidos"
             }
         ));
+        tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla1);
 
         tabla2.setModel(new javax.swing.table.DefaultTableModel(
@@ -178,9 +199,23 @@ public class Validacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        ulistado();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseClicked
+        int f=tabla1.getSelectedRow();
+        String cod=tabla1.getValueAt(f, 0).toString();
+        verD(cod);
+    }//GEN-LAST:event_tabla1MouseClicked
+    void verD(String cod){
+        DefaultTableModel dt=(DefaultTableModel)tabla2.getModel();
+            dt.setRowCount(0);
+            double sm=0;
+            for(modelo_documentacion x:ci.filtrarArt(cod)){
+                Object v[]={x.getIdDocumentacion(),x.getIipoDocumentacion(),x.getUbicacion(),x.getCip()};
+                dt.addRow(v);
+            }
+        }
     /**
      * @param args the command line arguments
      */
