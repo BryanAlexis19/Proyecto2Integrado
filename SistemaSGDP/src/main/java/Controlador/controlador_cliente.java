@@ -117,7 +117,8 @@ public class controlador_cliente implements Interface.interfaz_cliente{
                     modelo_documentacion n=new modelo_documentacion();
                     n.setIdDocumentacion(rs.getInt(1));
                     n.setIipoDocumentacion(rs.getInt(2));
-                    n.setUbicacion(rs.getString(3));
+                    //n.setUbicacion(rs.getString(3));
+                    n.setUbicacion(rs.getBytes(3));
                     n.setCip(rs.getInt(4));
                     lista.add(n);
                 }
@@ -125,6 +126,10 @@ public class controlador_cliente implements Interface.interfaz_cliente{
                 ex.printStackTrace();
             }
         return lista;
+    }
+
+    public void setCip(int parseInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    
 }
