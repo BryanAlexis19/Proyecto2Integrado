@@ -2,12 +2,12 @@ package Modelo;
 
 public class modelo_documentacion {
     private int idDocumentacion,iipoDocumentacion,cip;
-    private String ubicacion;
+    private byte[] ubicacion;
 
     public modelo_documentacion() {
     }
 
-    public modelo_documentacion(int idDocumentacion, int iipoDocumentacion, int cip, String ubicacion) {
+    public modelo_documentacion(int idDocumentacion, int iipoDocumentacion, int cip, byte[] ubicacion) {
         this.idDocumentacion = idDocumentacion;
         this.iipoDocumentacion = iipoDocumentacion;
         this.cip = cip;
@@ -38,13 +38,15 @@ public class modelo_documentacion {
         this.cip = cip;
     }
 
-    public String getUbicacion() {
+    public byte[] getUbicacion() {
         return ubicacion;
     }
 
-    public void setUbicacion(String ubicacion) {
+    public void setUbicacion(byte[] ubicacion) {
         this.ubicacion = ubicacion;
     }
+
+
     
     
     
