@@ -67,6 +67,7 @@ public class controlador_documentacion implements Interface.interfaz_documentaci
 
     @Override
     public boolean actualizarDoc(modelo_documentacion docum) {
+        int n=0;
         sql="UPDATE documentacion SET TipoDocumentacion=?, Ubicacion =?,CIP=? "
                 + "WHERE idDocumentacion=?";
         try {
@@ -75,7 +76,7 @@ public class controlador_documentacion implements Interface.interfaz_documentaci
             pst.setInt(2, docum.getIipoDocumentacion());
             pst.setBytes(3,docum.getUbicacion());
             pst.setInt(4, docum.getCip());
-            int n=pst.executeUpdate();
+            n=pst.executeUpdate();
             if(n!=0){
                 return true;
             }else{

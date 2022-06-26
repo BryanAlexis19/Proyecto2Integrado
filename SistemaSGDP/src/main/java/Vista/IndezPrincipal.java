@@ -4,17 +4,16 @@
  */
 package Vista;
 
-/**
- *
- * @author users
- */
 public class IndezPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Vista_Visualiza
-     */
+    Ingreso pingreso =  new Ingreso();
     public IndezPrincipal() {
         initComponents();
+        
+        //this.add(pingreso);
+        this.add(pingreso);
+        pingreso.setVisible(true);
+        this.locate(50, 50);
         
     }
 
@@ -112,11 +111,15 @@ public class IndezPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
