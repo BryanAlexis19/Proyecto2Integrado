@@ -11,7 +11,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,13 +22,13 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
     controlador_documentacion ctd= new controlador_documentacion();
     //controlador_cliente ctc =new controlador_cliente();
     //JFileChooser j =new JFileChooser();
-    String ruta_archivo;
+    String ruta_archivo="";
+    int id=-1;
     public Vista_RegistroDocumentario() {
         initComponents();
-        mostrar();
+        mostrarDocum();
         inabilitar();
-        MostrarClicb();
-        //MostrarCli_Combo();
+        
     }
     void inabilitar(){
         txtIdDoc.setVisible(false);
@@ -35,6 +37,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         cbTipoDoc.setEnabled(false);
         btnRegistrar.setEnabled(false);
         btnCancelar.setEnabled(false);
+        btnModificar.setEnabled(false);
     }
     void habilitar(){
         txtIdDoc.setVisible(false);
@@ -43,8 +46,9 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         btnCancelar.setEnabled(true);
         btnRegistrar.setEnabled(true);
         btnSeleccionar.setEnabled(true);
+        btnModificar.setEnabled(true);
     }
-    void mostrar(){
+    void mostrarDocum(){
         
             DefaultTableModel dt= (DefaultTableModel)tablaDocum.getModel();
             dt.setRowCount(0);
@@ -56,30 +60,19 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
    
     private void MostrarClicb(){
         controlador_cliente ctc =new controlador_cliente();
-        List<modelo_cliente> Lista = ctc.CliLista();
-        cbCIP.removeAllItems();
-        for(int i=0; i<Lista.size();i++){
-            cbCIP.addItem(Integer.toString(Lista.get(i).getCip()));
-            txtDni.setText(Lista.get(i).getDni());
-            txtApellidos.setText(Lista.get(i).getApellido());
-            txtNombres.setText(Lista.get(i).getNombre());
-            txtGrado.setText(Lista.get(i).getGrado());
-                        
+        modelo_cliente mc = new modelo_cliente();
+        mc.setCip(Integer.parseInt(txtCip.getText()));        
+        for(modelo_cliente modCli: ctc.BuscarCliente(mc)){
+            txtCip.setText(Integer.toString(modCli.getCip()));
+            txtDni.setText(modCli.getDni());
+            txtApellidos.setText(modCli.getApellido());
+            txtNombres.setText(modCli.getNombre());
+            txtGrado.setText(modCli.getGrado());                        
         }
+        
     }
-    /*private void MostrarCli_Combo(){
-        controlador_cliente ctc =new controlador_cliente();
-        modelo_cliente modCli = new modelo_cliente();
-        modCli.setCip((int)cbCIP.getSelectedItem());
-        List<modelo_cliente> Lista = ctc.BuscarCliente(modCli);
-        for(int i=0; i<Lista.size();i++){
-            txtCip_cli.setText(Integer.toString(Lista.get(i).getCip()));
-            txtDni.setText(Lista.get(i).getDni());
-            txtApellidos.setText(Lista.get(i).getApellido());
-            txtNombres.setText(Lista.get(i).getNombre());
-            txtGrado.setText(Lista.get(i).getGrado());                        
-        }
-    }*/
+    
+    
     
 
     @SuppressWarnings("unchecked")
@@ -103,8 +96,8 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         txtGrado = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        cbCIP = new javax.swing.JComboBox<>();
         txtCip_cli = new javax.swing.JTextField();
+        txtCip = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         cbTipoDoc = new javax.swing.JComboBox<>();
@@ -116,6 +109,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDocum = new javax.swing.JTable();
+        btnModificar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -159,15 +153,18 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Grado:");
 
-        txtDni.setBackground(new java.awt.Color(153, 153, 153));
+        txtDni.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtDni.setToolTipText("");
 
+        txtApellidos.setToolTipText("");
         txtApellidos.setEnabled(false);
 
         txtNombres.setEnabled(false);
 
         txtGrado.setEnabled(false);
 
-        btnBuscar.setBackground(new java.awt.Color(153, 153, 153));
+        btnBuscar.setBackground(new java.awt.Color(204, 204, 204));
+        btnBuscar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscar.setText("BUSCAR");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -177,13 +174,6 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         });
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-
-        cbCIP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbCIP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbCIPActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -212,14 +202,14 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                                 .addComponent(txtApellidos)
-                                .addComponent(txtGrado))
+                                .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtDni, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                                    .addComponent(cbCIP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txtCip))
                                 .addGap(23, 23, 23)
                                 .addComponent(txtCip_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(66, 66, 66)
                                 .addComponent(btnBuscar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(118, 118, 118)
@@ -235,12 +225,12 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(btnBuscar)
-                    .addComponent(cbCIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCip_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCip_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCip, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
@@ -269,7 +259,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Tipo de Documento:");
 
-        cbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Copia DNI", "Copia CIP", "Numero de Cuenta", "Comprobantes de Pago", "Historial Crediticio Actualizado", "Minuta", "Acta de Matrimonio", "Copia DNI Conyugue", "Reporte INFOCORP", " " }));
+        cbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Copia DNI", "Copia CIP", "Numero de Cuenta", "Comprobantes de Pago", "Historial Crediticio Actualizado", "Minuta", "Acta de Matrimonio", "Copia DNI Conyugue", "Reporte INFOCORP" }));
         cbTipoDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTipoDocActionPerformed(evt);
@@ -280,7 +270,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Ubicacion de documento");
 
-        btnSeleccionar.setText("Seleccionar");
+        btnSeleccionar.setText("Seleccionar Documento");
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionarActionPerformed(evt);
@@ -322,10 +312,18 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "IdDocumentación", "Tipo de Documento", "Documento", "CIP"
             }
         ));
+        tablaDocum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaDocumMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaDocum);
+
+        btnModificar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        btnModificar.setText("Modificar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -336,20 +334,18 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSeleccionar)
-                            .addComponent(cbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(txtIdDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(145, 145, 145))
+                .addGap(18, 18, 18)
+                .addComponent(btnModificar)
+                .addGap(54, 54, 54))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,7 +369,9 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
                             .addComponent(btnSeleccionar)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnNuevo)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNuevo)
+                            .addComponent(btnModificar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRegistrar)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,33 +438,52 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        File ruta = new File(ruta_archivo);
-        modelo_documentacion mdoc = new modelo_documentacion();
-        mdoc.setIipoDocumentacion(cbTipoDoc.getSelectedIndex());
-        mdoc.setCip(Integer.parseInt((String) cbCIP.getSelectedItem()));
-        try {
-            byte[] pdf = new byte[(int) ruta.length()];
-            InputStream input = new FileInputStream(ruta);
-            input.read(pdf);
-            mdoc.setUbicacion(pdf);
-            
-        } catch (IOException ex) {
-            mdoc.setUbicacion(null);
-            //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
-        }
-        ctd.insertarDoc(mdoc);
-        mostrar();
                
-            
+        if(cbTipoDoc.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un Tipo de documento ");
+        }else if(ruta_archivo.trim().length()==0 ){
+            JOptionPane.showMessageDialog(null, "Seleccione el documento a registrar");
+            }else if(txtCip.getText().trim().length()==0 ){
+                JOptionPane.showMessageDialog(null, "Seleccione el Cip del Cliente"); 
+            }else{
+                File ruta = new File(ruta_archivo);
+                modelo_documentacion mdoc = new modelo_documentacion();
+                mdoc.setIipoDocumentacion(cbTipoDoc.getSelectedIndex());
+                mdoc.setCip(Integer.parseInt(txtCip.getText()));
+                try {
+                    byte[] pdf = new byte[(int) ruta.length()];
+                    InputStream input = new FileInputStream(ruta);
+                    input.read(pdf);
+                    mdoc.setUbicacion(pdf);
+                } catch (IOException ex) {
+                    mdoc.setUbicacion(null);
+                    //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
+                }            
+                ctd.insertarDoc(mdoc);
+                mostrarDocum();
+                inabilitar();
+                JOptionPane.showMessageDialog(null, "Documento registrado");
+            }  
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        MostrarClicb();
+        if("".equals(txtCip.getText())){
+            JOptionPane.showMessageDialog(null, "Debe ingresar el Cip del cliente");
+        }else{
+            MostrarClicb();
+        }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void cbCIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCIPActionPerformed
-        //MostrarCli_Combo();
-    }//GEN-LAST:event_cbCIPActionPerformed
+    private void tablaDocumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDocumMouseClicked
+        int fila=tablaDocum.getSelectedRow();
+        txtIdDoc.setText(tablaDocum.getValueAt(fila,0).toString());
+        cbTipoDoc.setSelectedIndex((int)tablaDocum.getValueAt(fila,1));
+        btnSeleccionar.setText(tablaDocum.getValueAt(fila,2).toString());
+        txtCip.setText(tablaDocum.getValueAt(fila,3).toString());
+        btnModificar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+    }//GEN-LAST:event_tablaDocumMouseClicked
 
     /**
      * @param args the command line arguments
@@ -507,10 +524,10 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
     private javax.swing.ButtonGroup GrupoDocumentacion;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSeleccionar;
-    private javax.swing.JComboBox<String> cbCIP;
     private javax.swing.JComboBox<String> cbTipoDoc;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -531,6 +548,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tablaDocum;
     private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCip;
     private javax.swing.JTextField txtCip_cli;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtGrado;
