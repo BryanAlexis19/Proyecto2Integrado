@@ -53,9 +53,9 @@ public class controlador_usuario implements Interface.interfaz_usuario {
             Connection con = Conexion.getConnection();
             if(rs.next()){
             if(usr.getContraseña().equals(rs.getString(3))){
-            usr.setId_usuario(rs.getInt(1));
-            usr.setUsuario(rs.getString(2));
-            usr.setTipo(rs.getInt(4));    
+            usr.setId_usuario(rs.getInt(1));            
+            usr.setUsuario(rs.getString(2));            
+            usr.setTipo(rs.getInt(4));            
             return true;
             }else{
             return false;
@@ -68,6 +68,6 @@ return false;
     }
     
     
-    
+       
     }
 

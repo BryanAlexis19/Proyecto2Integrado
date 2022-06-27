@@ -82,12 +82,14 @@ public class controlador_cliente implements Interface.interfaz_cliente{
     @Override
     public int ingresoC(modelo_cliente ep) {
         int respuesta =0;
+        ep.imprimirDatos();
         try {
             Connection con = Conexion.getConnection();
             String sql = "INSERT INTO cliente (CIP, DNI, Nombres, Apellidos, Grado, Estado, Dni_C) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps = con.prepareStatement(sql);
             ps.setInt(1, ep.getCip());
+            //clienteData.setCip(1, ep.getCip());
             ps.setString(2, ep.getDni());
             ps.setString(3, ep.getNombre());
             ps.setString(4, ep.getApellido());
@@ -102,7 +104,7 @@ public class controlador_cliente implements Interface.interfaz_cliente{
             ex.printStackTrace();
         }
         return respuesta;
-    } 
+    }         
 
     @Override
     public List<modelo_documentacion> filtrarArt(String an) {
@@ -127,6 +129,8 @@ public class controlador_cliente implements Interface.interfaz_cliente{
             }
         return lista;
     }
+    
+    
 
     public void setCip(int parseInt) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
