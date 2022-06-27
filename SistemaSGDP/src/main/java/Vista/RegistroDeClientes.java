@@ -2,19 +2,29 @@
 package Vista;
 
 import Controlador.controlador_cliente;
+import Controlador.controlador_seguimiento;
+import Controlador.controlador_usuario;
+
 import Modelo.*;
 import javax.swing.JOptionPane;
 
 
 public class RegistroDeClientes extends javax.swing.JFrame {
 
-    
+    int tipoAccion = 0;
     int t =0;
     controlador_cliente m = new controlador_cliente();
+    controlador_seguimiento con_seg = new controlador_seguimiento();
+    //Instanciar un objeto del modelo SeguimientoDocumentacion
+    modelo_seguimiento seguim = new modelo_seguimiento();
+    int idUsuario;
     
     public RegistroDeClientes() {
         initComponents();
-        txtFechacliente.setVisible(true);
+    }
+    public RegistroDeClientes(int idUsuario) {
+        this.idUsuario = idUsuario;
+        initComponents();
     }
 
     
@@ -52,8 +62,6 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtDnic = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        txtFechacliente = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
@@ -121,6 +129,11 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setFont(new java.awt.Font("Futura Bk BT", 1, 12)); // NOI18N
         jButton3.setText("Actualizar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setFont(new java.awt.Font("Futura Bk BT", 1, 14)); // NOI18N
@@ -199,13 +212,6 @@ public class RegistroDeClientes extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton5.setText("jButton5");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -247,19 +253,13 @@ public class RegistroDeClientes extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(106, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtFechacliente, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(186, 186, 186))))
+                .addGap(0, 179, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(186, 186, 186))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,11 +268,9 @@ public class RegistroDeClientes extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,10 +307,7 @@ public class RegistroDeClientes extends javax.swing.JFrame {
                                     .addComponent(rbSolter)
                                     .addComponent(rbCasado)
                                     .addComponent(rbViudo))))))
-                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(txtFechacliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -337,31 +332,42 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //Boton Registrar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                 
+            
+        //Tipo de accion registrarr (equivale a 1)
+            tipoAccion = 1;
+            //Instanciar un objeto del modelo cliente
             modelo_cliente mc = new modelo_cliente();
-            mc.setCip(Integer.parseInt(txtCip.getText()));
+            
+        try {
+            //Obtener los datos de las cajas de texto
+            mc.setCip(Integer.parseInt(txtCip.getText()));            
+            seguim.setCIP(Integer.parseInt(txtCip.getText()));            
+            seguim.setIdUsuario(idUsuario);            
+            seguim.setFechaNow();            
+            seguim.setAccion(tipoAccion);            
             mc.setDni(txtDni.getText());
             mc.setApellido(txtApellido.getText());
             mc.setNombre(txtNombre.getText());
             mc.setGrado(txtGrado.getText());
             mc.setEstado(1);
             mc.setDni_c(txtDnic.getText());
+            mc.imprimirDatos();
+            //Ejecutar el ingreso desde el controlador cliente
             m.ingresoC(mc);
-            
-            
+            //Ejecutar el ingreso del seguiento
+            con_seg.ingresoSeg(seguim);
+
+        } catch (Exception e) {
+            System.out.println("Error > "+ e.toString());
+        }
         
-           /* cip = txtCip.getText();
-            dni = txtDni.getText();
-            apellido = txtApellido.getText();
-            nombre = txtNombre.getText();
-            grado = txtGrado.getText();
-            estado = rbgEstadoCivil.getSelection().toString();
-            dni_c = txtDnic.getText();
-            */
             
+                    
             
-            
+                       
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -389,10 +395,10 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         t=3;
     }//GEN-LAST:event_rbViudoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        modelo_seguimiento ms = new modelo_seguimiento();
-        txtFechacliente.setText(" "+ms.fechaSe());
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        tipoAccion = 2;
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,7 +440,6 @@ public class RegistroDeClientes extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -456,7 +461,6 @@ public class RegistroDeClientes extends javax.swing.JFrame {
     public javax.swing.JTextField txtCip;
     public javax.swing.JTextField txtDni;
     public javax.swing.JTextField txtDnic;
-    private javax.swing.JTextField txtFechacliente;
     public javax.swing.JTextField txtGrado;
     public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables

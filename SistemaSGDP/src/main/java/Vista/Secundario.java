@@ -9,11 +9,15 @@ package Vista;
  * @author user
  */
 public class Secundario extends javax.swing.JFrame {
-
+    int idUsuario;
     /**
      * Creates new form Secundario
      */
     public Secundario() {
+        initComponents();
+    }
+    public Secundario(int idUsuario) {
+        this.idUsuario = idUsuario;
         initComponents();
     }
 
@@ -157,9 +161,11 @@ public class Secundario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnRegistroCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroCActionPerformed
-                 RegistroDeClientes q = new RegistroDeClientes();
+                 
+                //Mandarle al registre de clientes el id del usuario
+                 RegistroDeClientes q = new RegistroDeClientes(idUsuario);
                  q.setVisible(true);
-                 this.dispose();  
+                 this.setVisible(false);
     }//GEN-LAST:event_btnRegistroCActionPerformed
 
     private void btnVerRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerRegistroActionPerformed

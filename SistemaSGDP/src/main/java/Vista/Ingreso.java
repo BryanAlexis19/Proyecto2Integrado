@@ -181,12 +181,14 @@ public class Ingreso extends javax.swing.JFrame {
            
              mu.setUsuario(txtUsuario.getText());
              mu.setContraseña(Pass);
+             
          
            if(ct.login(mu)){
                if(mu.getTipo() == 1){
-                 Secundario q = new Secundario();
+                 //System.out.println("Id_usuario_enVista: " + mu.getId_usuario());                 
+                 Secundario q = new Secundario(mu.getId_usuario());
                  q.setVisible(true);
-                 this.dispose();   
+                 this.setVisible(false);
                  
                } else {
                  Validacion q = new Validacion();

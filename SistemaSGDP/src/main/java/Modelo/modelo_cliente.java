@@ -91,5 +91,15 @@ public class modelo_cliente {
         String vector []  = {"", "Soltero", "Casado", "Viudo"};
         return vector [estado];
 }
+    public String imprimirDatos(){
+        return " CIP :" + cip + " DNI: " + dni + " Apellido: " + apellido +
+                " Nombre: " + nombre + " Grado: " + grado + 
+                " Estado : " + estado + " DNI Conyugue " + dni_c;
+    }
+
+    
+    public void setCip(int i, int cip) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
