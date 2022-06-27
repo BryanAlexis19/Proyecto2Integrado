@@ -8,12 +8,13 @@ import javax.swing.JOptionPane;
 
 public class RegistroDeClientes extends javax.swing.JFrame {
 
-   
+    
     int t =0;
     controlador_cliente m = new controlador_cliente();
     
     public RegistroDeClientes() {
         initComponents();
+        txtFechacliente.setVisible(true);
     }
 
     
@@ -51,6 +52,8 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtDnic = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        txtFechacliente = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
@@ -108,7 +111,6 @@ public class RegistroDeClientes extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setFont(new java.awt.Font("Futura Bk BT", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\listar.png")); // NOI18N
         jButton1.setText("Registrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,12 +120,10 @@ public class RegistroDeClientes extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setFont(new java.awt.Font("Futura Bk BT", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\actualizar.png")); // NOI18N
         jButton3.setText("Actualizar");
 
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setFont(new java.awt.Font("Futura Bk BT", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\salir.png")); // NOI18N
         jButton2.setText("Salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,13 +199,25 @@ public class RegistroDeClientes extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
+        jButton5.setText("jButton5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
@@ -221,36 +233,33 @@ public class RegistroDeClientes extends javax.swing.JFrame {
                                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCip, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(23, 23, 23))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(73, 73, 73)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(11, 11, 11))))
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGap(33, 33, 33)
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(rbSolter)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(rbCasado)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(rbViudo)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbSolter)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbCasado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbViudo)))
+                        .addGap(70, 70, 70)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(106, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtFechacliente, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(186, 186, 186))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,11 +271,14 @@ public class RegistroDeClientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -299,16 +311,13 @@ public class RegistroDeClientes extends javax.swing.JFrame {
                                     .addComponent(rbViudo))))))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(txtFechacliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 620, 420));
-
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Salida.png")); // NOI18N
         jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 30, 30));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\papel.jpeg")); // NOI18N
-        jLabel9.setText("jLabel9");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -380,6 +389,11 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         t=3;
     }//GEN-LAST:event_rbViudoActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        modelo_seguimiento ms = new modelo_seguimiento();
+        txtFechacliente.setText(" "+ms.fechaSe());
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -420,6 +434,7 @@ public class RegistroDeClientes extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -441,6 +456,7 @@ public class RegistroDeClientes extends javax.swing.JFrame {
     public javax.swing.JTextField txtCip;
     public javax.swing.JTextField txtDni;
     public javax.swing.JTextField txtDnic;
+    private javax.swing.JTextField txtFechacliente;
     public javax.swing.JTextField txtGrado;
     public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
