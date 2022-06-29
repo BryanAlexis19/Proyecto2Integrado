@@ -4,14 +4,14 @@ package Vista;
 
 import Controlador.controlador_documentacion;
 import Controlador.controlador_cliente;
+import Controlador.controlador_ingresodocumentacion;
 import Modelo.modelo_documentacion;
 import Modelo.modelo_cliente;
+import Modelo.modelo_ingresodocumentacion;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -20,15 +20,26 @@ import javax.swing.table.DefaultTableModel;
 public class Vista_RegistroDocumentario extends javax.swing.JFrame {
 
     controlador_documentacion ctd= new controlador_documentacion();
+    controlador_ingresodocumentacion cting_doc = new controlador_ingresodocumentacion();
+    //modelo_ingresodocumentacion mingDoc = new modelo_ingresodocumentacion();
     //controlador_cliente ctc =new controlador_cliente();
     //JFileChooser j =new JFileChooser();
     String ruta_archivo="";
+    
     int id=-1;
+    int idUsuario;
     public Vista_RegistroDocumentario() {
         initComponents();
         mostrarDocum();
         inabilitar();
         
+    }
+    public Vista_RegistroDocumentario(int idUsuario) {
+        initComponents();
+        mostrarDocum();
+        inabilitar();
+        
+        this.idUsuario = idUsuario;
     }
     void inabilitar(){
         txtIdDoc.setVisible(false);
@@ -36,8 +47,9 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         btnSeleccionar.setEnabled(false);
         cbTipoDoc.setEnabled(false);
         btnRegistrar.setEnabled(false);
-        btnCancelar.setEnabled(false);
+        //btnCancelar.setEnabled(true);
         btnModificar.setEnabled(false);
+        
     }
     void habilitar(){
         txtIdDoc.setVisible(false);
@@ -46,7 +58,10 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         btnCancelar.setEnabled(true);
         btnRegistrar.setEnabled(true);
         btnSeleccionar.setEnabled(true);
-        btnModificar.setEnabled(true);
+        //btnModificar.setEnabled(true);
+        cbTipoDoc.setSelectedIndex(0);
+        ruta_archivo="";
+        
     }
     void mostrarDocum(){
         
@@ -55,10 +70,12 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
             for (modelo_documentacion x: ctd.DLista()) {
             Object v[]={x.getIdDocumentacion(),x.getIipoDocumentacion(),x.getUbicacion(),x.getCip()};
             dt.addRow(v);
+            //asignarle el valor de la ultima row el IdDocumento
+            txtIdDoc.setText(""+x.getIdDocumentacion());
         }     
     }
    
-    private void MostrarClicb(){
+    private void MostrarClientes(){
         controlador_cliente ctc =new controlador_cliente();
         modelo_cliente mc = new modelo_cliente();
         mc.setCip(Integer.parseInt(txtCip.getText()));        
@@ -72,24 +89,21 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         
     }
     
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        GrupoDocumentacion = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        panelCliente = new javax.swing.JPanel();
+        lblTitulo_gral = new javax.swing.JLabel();
+        lblTitulo_Datos = new javax.swing.JLabel();
+        lblCip = new javax.swing.JLabel();
+        lblDni = new javax.swing.JLabel();
+        lblApellidos = new javax.swing.JLabel();
+        lblNombres = new javax.swing.JLabel();
+        lblGrado = new javax.swing.JLabel();
         txtDni = new javax.swing.JTextField();
         txtApellidos = new javax.swing.JTextField();
         txtNombres = new javax.swing.JTextField();
@@ -98,11 +112,11 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         txtCip_cli = new javax.swing.JTextField();
         txtCip = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        panelDocumento = new javax.swing.JPanel();
+        lblTipo_docum = new javax.swing.JLabel();
         cbTipoDoc = new javax.swing.JComboBox<>();
         txtIdDoc = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        lblUbica_docum = new javax.swing.JLabel();
         btnSeleccionar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
@@ -110,7 +124,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDocum = new javax.swing.JTable();
         btnModificar = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
+        lblTitulo_Docum = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,39 +133,39 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 30, 30));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelCliente.setBackground(new java.awt.Color(0, 153, 153));
+        panelCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Unispace", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de Documentación");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblTitulo_gral.setFont(new java.awt.Font("Unispace", 1, 18)); // NOI18N
+        lblTitulo_gral.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo_gral.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo_gral.setText("Registro de Documentación");
+        lblTitulo_gral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblTitulo_gral.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("DATOS DEL ADMINISTRADO");
+        lblTitulo_Datos.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        lblTitulo_Datos.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo_Datos.setText("DATOS DEL ADMINISTRADO");
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("CIP:");
+        lblCip.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblCip.setForeground(new java.awt.Color(255, 255, 255));
+        lblCip.setText("CIP:");
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("DNI:");
+        lblDni.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDni.setForeground(new java.awt.Color(255, 255, 255));
+        lblDni.setText("DNI:");
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Apellidos:");
+        lblApellidos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblApellidos.setForeground(new java.awt.Color(255, 255, 255));
+        lblApellidos.setText("Apellidos:");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombres:");
+        lblNombres.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblNombres.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombres.setText("Nombres:");
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Grado:");
+        lblGrado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblGrado.setForeground(new java.awt.Color(255, 255, 255));
+        lblGrado.setText("Grado:");
 
         txtDni.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         txtDni.setToolTipText("");
@@ -175,89 +189,89 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelClienteLayout = new javax.swing.GroupLayout(panelCliente);
+        panelCliente.setLayout(panelClienteLayout);
+        panelClienteLayout.setHorizontalGroup(
+            panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelClienteLayout.createSequentialGroup()
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelClienteLayout.createSequentialGroup()
                         .addGap(192, 192, 192)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTitulo_gral, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelClienteLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTitulo_Datos))
+                    .addGroup(panelClienteLayout.createSequentialGroup()
+                        .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelClienteLayout.createSequentialGroup()
                                 .addGap(71, 71, 71)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblCip)
+                                    .addComponent(lblDni)))
+                            .addComponent(lblGrado, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblNombres, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblApellidos, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                                 .addComponent(txtApellidos)
                                 .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelClienteLayout.createSequentialGroup()
+                                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtDni, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                                     .addComponent(txtCip))
                                 .addGap(23, 23, 23)
                                 .addComponent(txtCip_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(66, 66, 66)
                                 .addComponent(btnBuscar))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelClienteLayout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelClienteLayout.setVerticalGroup(
+            panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelClienteLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jLabel1)
+                .addComponent(lblTitulo_gral)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(lblTitulo_Datos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCip)
                     .addComponent(btnBuscar)
                     .addComponent(txtCip_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCip, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDni)
                     .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lblApellidos))
                 .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lblNombres))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(lblGrado))
                 .addGap(26, 26, 26))
         );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 24, -1, 270));
+        jPanel2.add(panelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 24, -1, 270));
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelDocumento.setBackground(new java.awt.Color(0, 153, 153));
+        panelDocumento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Tipo de Documento:");
+        lblTipo_docum.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblTipo_docum.setForeground(new java.awt.Color(255, 255, 255));
+        lblTipo_docum.setText("Tipo de Documento:");
 
         cbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Copia DNI", "Copia CIP", "Numero de Cuenta", "Comprobantes de Pago", "Historial Crediticio Actualizado", "Minuta", "Acta de Matrimonio", "Copia DNI Conyugue", "Reporte INFOCORP" }));
         cbTipoDoc.addActionListener(new java.awt.event.ActionListener() {
@@ -266,9 +280,9 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Ubicacion de documento");
+        lblUbica_docum.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblUbica_docum.setForeground(new java.awt.Color(255, 255, 255));
+        lblUbica_docum.setText("Ubicacion de documento");
 
         btnSeleccionar.setText("Seleccionar Documento");
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
@@ -324,76 +338,81 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
 
         btnModificar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelDocumentoLayout = new javax.swing.GroupLayout(panelDocumento);
+        panelDocumento.setLayout(panelDocumentoLayout);
+        panelDocumentoLayout.setHorizontalGroup(
+            panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDocumentoLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                .addGroup(panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTipo_docum)
+                    .addComponent(lblUbica_docum))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(btnModificar)
                 .addGap(54, 54, 54))
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(panelDocumentoLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        panelDocumentoLayout.setVerticalGroup(
+            panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDocumentoLayout.createSequentialGroup()
+                .addGroup(panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDocumentoLayout.createSequentialGroup()
                         .addComponent(txtIdDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
+                            .addComponent(lblTipo_docum))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
+                        .addGroup(panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUbica_docum)
                             .addComponent(btnSeleccionar)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(panelDocumentoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnNuevo)
                             .addComponent(btnModificar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRegistrar)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(panelDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDocumentoLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDocumentoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancelar)
                         .addGap(17, 17, 17))))
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 630, 240));
+        jPanel2.add(panelDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 630, 240));
 
-        jLabel15.setBackground(new java.awt.Color(0, 153, 153));
-        jLabel15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("DOCUMENTACIÓN A PRESENTAR");
-        jLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel15.setOpaque(true);
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, 30));
+        lblTitulo_Docum.setBackground(new java.awt.Color(0, 153, 153));
+        lblTitulo_Docum.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblTitulo_Docum.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo_Docum.setText("DOCUMENTACIÓN A PRESENTAR");
+        lblTitulo_Docum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblTitulo_Docum.setOpaque(true);
+        jPanel2.add(lblTitulo_Docum, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, 30));
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 960, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -413,6 +432,8 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         habilitar();
+        btnSeleccionar.setText("Seleccionar Documento");
+        btnModificar.setEnabled(false);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
@@ -435,6 +456,9 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
+        Secundario sec = new Secundario();
+        sec.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -447,6 +471,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Seleccione el Cip del Cliente"); 
             }else{
                 File ruta = new File(ruta_archivo);
+                
                 modelo_documentacion mdoc = new modelo_documentacion();
                 mdoc.setIipoDocumentacion(cbTipoDoc.getSelectedIndex());
                 mdoc.setCip(Integer.parseInt(txtCip.getText()));
@@ -458,20 +483,33 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     mdoc.setUbicacion(null);
                     //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
-                }            
-                ctd.insertarDoc(mdoc);
+                }
+                //txtIdDoc.setText(Integer.toString(mdoc.getIdDocumentacion()));
+                ctd.insertarDoc(mdoc);           
                 mostrarDocum();
                 inabilitar();
+                //Registrando la tabla ingresodocumentacion                
+                modelo_ingresodocumentacion mingDoc = new modelo_ingresodocumentacion();
+                mingDoc.setIdDocumentacion(Integer.parseInt(txtIdDoc.getText()));
+                mingDoc.setIdUsuario(idUsuario);
+                mingDoc.fechaInDoc();
+                cting_doc.ingresoDoc(mingDoc);
+                System.out.println(mingDoc.toString());
                 JOptionPane.showMessageDialog(null, "Documento registrado");
             }  
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        if("".equals(txtCip.getText())){
+        String cipbd,ciptxt;
+        ciptxt=txtCip.getText();
+        cipbd=txtCip_cli.getText();
+        if("".equals(txtCip.getText())){            
             JOptionPane.showMessageDialog(null, "Debe ingresar el Cip del cliente");
+        //falta que comparar solo clientes registrados
         }else{
-            MostrarClicb();
-        }
+            MostrarClientes();
+        }          
+        
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -481,9 +519,45 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         cbTipoDoc.setSelectedIndex((int)tablaDocum.getValueAt(fila,1));
         btnSeleccionar.setText(tablaDocum.getValueAt(fila,2).toString());
         txtCip.setText(tablaDocum.getValueAt(fila,3).toString());
+        
         btnModificar.setEnabled(true);
-        btnCancelar.setEnabled(true);
+        btnRegistrar.setEnabled(false);
+        txtDni.setText("");
+        txtApellidos.setText("");
+        txtNombres.setText("");
+        txtGrado.setText("");
+        cbTipoDoc.setEnabled(true);
+        btnSeleccionar.setEnabled(true);
     }//GEN-LAST:event_tablaDocumMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        if(cbTipoDoc.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un Tipo de documento ");
+        }else if(ruta_archivo.trim().length()==0 ){
+            JOptionPane.showMessageDialog(null, "Seleccione el documento a registrar");
+            }else if(txtCip.getText().trim().length()==0 ){
+                JOptionPane.showMessageDialog(null, "Seleccione el Cip del Cliente"); 
+            }else{
+                File ruta = new File(ruta_archivo);
+                modelo_documentacion mdoc = new modelo_documentacion();
+                mdoc.setIdDocumentacion(Integer.parseInt(txtIdDoc.getText()));
+                mdoc.setIipoDocumentacion(cbTipoDoc.getSelectedIndex());
+                mdoc.setCip(Integer.parseInt(txtCip.getText()));
+                try {
+                    byte[] pdf = new byte[(int) ruta.length()];
+                    InputStream input = new FileInputStream(ruta);
+                    input.read(pdf);
+                    mdoc.setUbicacion(pdf);
+                } catch (IOException ex) {
+                    mdoc.setUbicacion(null);
+                    //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
+                }            
+                ctd.actualizarDoc(mdoc);
+                mostrarDocum();
+                inabilitar();
+                JOptionPane.showMessageDialog(null, "Las modificaciones fueron guardados");
+            }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -521,7 +595,6 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup GrupoDocumentacion;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnModificar;
@@ -530,22 +603,22 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
     private javax.swing.JButton btnSeleccionar;
     private javax.swing.JComboBox<String> cbTipoDoc;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblApellidos;
+    private javax.swing.JLabel lblCip;
+    private javax.swing.JLabel lblDni;
+    private javax.swing.JLabel lblGrado;
+    private javax.swing.JLabel lblNombres;
+    private javax.swing.JLabel lblTipo_docum;
+    private javax.swing.JLabel lblTitulo_Datos;
+    private javax.swing.JLabel lblTitulo_Docum;
+    private javax.swing.JLabel lblTitulo_gral;
+    private javax.swing.JLabel lblUbica_docum;
+    private javax.swing.JPanel panelCliente;
+    private javax.swing.JPanel panelDocumento;
     private javax.swing.JTable tablaDocum;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCip;
