@@ -191,10 +191,10 @@ public class Ingreso extends javax.swing.JFrame {
                  this.setVisible(false);
                  
                } else {
-                 Validacion q = new Validacion();
+                 int usu=mu.getId_usuario();
+                 Validacion q = new Validacion(usu);
                  q.setVisible(true);
-                 this.dispose();  
-               
+                 this.dispose();   
                }
            }else {
                JOptionPane.showMessageDialog(this,"Datos incorrectos");

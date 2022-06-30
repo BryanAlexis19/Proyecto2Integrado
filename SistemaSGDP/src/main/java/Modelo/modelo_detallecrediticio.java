@@ -64,9 +64,10 @@ public class modelo_detallecrediticio {
     
     public String fechaDc (){
         Calendar t = Calendar.getInstance();
-        String fe = t.get(Calendar.DAY_OF_MONTH)+ "-"+t.get(Calendar.MONTH)+"-"+t.get(Calendar.YEAR);
+        String fe = t.get(Calendar.YEAR)+"-"+(t.get(Calendar.MONTH)+1)+"-"+t.get(Calendar.DAY_OF_MONTH);
         return fe;
     }
- 
-    
+    public void setFechaNow(){
+          fechaDetalle = fechaDc();
+      }
 }
