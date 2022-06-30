@@ -11,4 +11,5 @@ public interface interfaz_cliente {
     List<modelo_cliente> BuscarCliente(modelo_cliente clie);
     int ingresoC(modelo_cliente ep);
     List<modelo_documentacion> filtrarArt(String an);
+    int actualizarC(modelo_cliente ac);
 }

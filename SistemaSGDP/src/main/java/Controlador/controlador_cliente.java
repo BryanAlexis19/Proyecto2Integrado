@@ -135,5 +135,32 @@ public class controlador_cliente implements Interface.interfaz_cliente{
     public void setCip(int parseInt) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public int actualizarC(modelo_cliente ac) {
+       int salida =0;
+        ac.imprimirDatos();
+        try {
+            Connection con = Conexion.getConnection();
+            String sql = "UPDATE cliente SET DNI=?, Nombres=?, Apellidos=?, Grado=?, Estado=?, Dni_C=? WHERE CIP =?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
+            //clienteData.setCip(1, ep.getCip());
+            ps.setString(1, ac.getDni());
+            ps.setString(2, ac.getNombre());
+            ps.setString(3, ac.getApellido());
+            ps.setString(4, ac.getGrado());
+            ps.setInt(5, ac.getEstado());
+            ps.setString(6, ac.getDni_c());
+            ps.setInt(7, ac.getCip());
+            salida = ps.executeUpdate();
+            
+                    
+                    
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return salida;
+    }
    
 }
