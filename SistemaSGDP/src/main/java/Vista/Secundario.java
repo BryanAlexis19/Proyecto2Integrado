@@ -175,7 +175,7 @@ public class Secundario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerRegistroActionPerformed
 
     private void btnRegistroDocumentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroDocumentacionActionPerformed
-                 Vista_RegistroDocumentario q = new Vista_RegistroDocumentario();
+                 Vista_RegistroDocumentario q = new Vista_RegistroDocumentario(idUsuario);
                  q.setVisible(true);
                  this.dispose();  
     }//GEN-LAST:event_btnRegistroDocumentacionActionPerformed

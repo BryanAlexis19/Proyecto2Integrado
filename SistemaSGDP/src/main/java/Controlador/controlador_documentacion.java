@@ -3,7 +3,6 @@ package Controlador;
 
 import Conexion.Conexion;
 import Modelo.modelo_documentacion;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,7 +44,6 @@ public class controlador_documentacion implements Interface.interfaz_documentaci
 
     @Override
     public boolean insertarDoc(modelo_documentacion docum) {
-        //sql="insert into documentacion(tipoDocumentacion,Ubicacion,CIP) values (?,?,?)";
         sql="INSERT INTO documentacion (idDocumentacion, TipoDocumentacion, Ubicacion,CIP) VALUES (?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
