@@ -14,7 +14,7 @@ public class  controlador_detallecrediticio implements Interface.interfaz_detall
         int respuesta =0;
         try {
             Connection con = Conexion.getConnection();
-            String sql = "INSERT INTO detallecredito (Reseña, idUsuario, idDocumentacion, fecha) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO detallecredito (Reseña, idUsuario, idDocumentacion, fechaDetalle) VALUES (?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps = con.prepareStatement(sql);
             ps.setInt(1, ep.getReseña());
