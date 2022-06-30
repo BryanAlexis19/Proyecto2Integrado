@@ -3,17 +3,26 @@ package Vista;
 import Controlador.*;
 import javax.swing.table.DefaultTableModel;
 import Modelo.*;
+import javax.swing.JOptionPane;
 
 
 public class Validacion extends javax.swing.JFrame {
     controlador_documentacion dos =new controlador_documentacion();
     controlador_cliente ci = new controlador_cliente();
     controlador_usuario cu = new controlador_usuario();
-
+    controlador_detallecrediticio Dt=new controlador_detallecrediticio();
+    int idUsuario;
+    int Resena=0;
     public Validacion() {
+        initComponents();
+    }
+    
+    Validacion(int idUsuario) {
+        this.idUsuario = idUsuario;
         initComponents();
         clistado();
         Dlistado();
+        ComboElegir.setEnabled(false);
     }
     
     void ulistado (){
@@ -22,7 +31,7 @@ public class Validacion extends javax.swing.JFrame {
         for(modelo_usuario x:cu.ULista()){
             Object v[] = {x.getContraseña(), x.getId_usuario(), x.getTipo(), x.getUsuario()};
             dt.addRow(v);
-        }
+    }
         
     }
     void clistado (){
@@ -42,7 +51,7 @@ public class Validacion extends javax.swing.JFrame {
             dt.addRow(v);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -53,11 +62,14 @@ public class Validacion extends javax.swing.JFrame {
         tabla1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla2 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        ComboElegir = new javax.swing.JComboBox<>();
+        btnRespuestaCredito = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtidDocumentacion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,26 +98,31 @@ public class Validacion extends javax.swing.JFrame {
 
         tabla2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
+                "idDocumentacion", "TipoDocumentacion", "Ubicacion", "Cip", "------------"
             }
         ));
+        tabla2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabla2);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir", "Aprobado", "Desaprobado" }));
+        ComboElegir.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir", "Aprobado", "Desaprobado" }));
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 204));
-        jButton1.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("RESPUESTA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRespuestaCredito.setBackground(new java.awt.Color(0, 204, 204));
+        btnRespuestaCredito.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        btnRespuestaCredito.setForeground(new java.awt.Color(255, 255, 255));
+        btnRespuestaCredito.setText("RESPUESTA");
+        btnRespuestaCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRespuestaCreditoActionPerformed(evt);
             }
         });
 
@@ -115,31 +132,38 @@ public class Validacion extends javax.swing.JFrame {
 
         jButton2.setText("X");
 
+        jLabel2.setText("Reseña:");
+
+        jLabel3.setText("IdDocumentacion:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(257, 257, 257))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(196, 196, 196)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(196, 196, 196)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))
-                        .addGap(19, 19, 19))))
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(86, 86, 86)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(ComboElegir, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRespuestaCredito, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtidDocumentacion))))
+                .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,15 +173,22 @@ public class Validacion extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(ComboElegir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtidDocumentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRespuestaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)))
+                    .addComponent(jLabel2))
                 .addGap(50, 50, 50))
         );
 
@@ -198,15 +229,50 @@ public class Validacion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ulistado();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnRespuestaCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespuestaCreditoActionPerformed
+        modelo_detallecrediticio mc = new modelo_detallecrediticio();
+        if(ComboElegir.getSelectedIndex()== 1){
+            Resena=1;
+            try {
+            //Obtener los datos de las cajas de texto
+            mc.setReseña(Resena);   
+            mc.setIdUsuario(idUsuario);         
+            mc.setIdDocumentacion(Integer.parseInt(txtidDocumentacion.getText()));
+            mc.setFechaNow();            
+            //Ejecutar el ingreso desde el controlador cliente
+            Dt.ingresoDet(mc);
+            } catch (Exception e) {
+            System.out.println("Error > "+ e.toString());
+            }
+        }else if(ComboElegir.getSelectedIndex()== 2){
+            Resena=2;
+            try {
+            //Obtener los datos de las cajas de texto
+            mc.setReseña(Resena);   
+            mc.setIdUsuario(idUsuario);         
+            mc.setIdDocumentacion(Integer.parseInt(txtidDocumentacion.getText()));
+            mc.setFechaNow();            
+            //Ejecutar el ingreso desde el controlador cliente
+            Dt.ingresoDet(mc);
+            } catch (Exception e) {
+            System.out.println("Error > "+ e.toString());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Necesitas elegir el estado del documento");
+        }
+    }//GEN-LAST:event_btnRespuestaCreditoActionPerformed
 
     private void tabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseClicked
         int f=tabla1.getSelectedRow();
         String cod=tabla1.getValueAt(f, 0).toString();
         verD(cod);
     }//GEN-LAST:event_tabla1MouseClicked
+
+    private void tabla2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla2MouseClicked
+        int fila=tabla2.getSelectedRow();//fila seleccionada
+        txtidDocumentacion.setText(tabla2.getValueAt(fila, 0).toString());
+        ComboElegir.setEnabled(true);
+    }//GEN-LAST:event_tabla2MouseClicked
     void verD(String cod){
         DefaultTableModel dt=(DefaultTableModel)tabla2.getModel();
             dt.setRowCount(0);
@@ -215,7 +281,7 @@ public class Validacion extends javax.swing.JFrame {
                 Object v[]={x.getIdDocumentacion(),x.getIipoDocumentacion(),x.getUbicacion(),x.getCip()};
                 dt.addRow(v);
             }
-        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -252,10 +318,12 @@ public class Validacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> ComboElegir;
+    private javax.swing.JButton btnRespuestaCredito;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -263,5 +331,6 @@ public class Validacion extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tabla1;
     private javax.swing.JTable tabla2;
+    private javax.swing.JTextField txtidDocumentacion;
     // End of variables declaration//GEN-END:variables
 }
