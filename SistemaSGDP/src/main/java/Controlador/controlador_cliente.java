@@ -70,7 +70,7 @@ public class controlador_cliente implements Interface.interfaz_cliente{
                 modCli.setEstado(rs.getInt(6));
                 modCli.setDni_c(rs.getString(7));
                 Lista.add(modCli);
-                System.out.print(modCli);
+                //System.out.print(modCli);
             }
             
         }catch(SQLException x){
