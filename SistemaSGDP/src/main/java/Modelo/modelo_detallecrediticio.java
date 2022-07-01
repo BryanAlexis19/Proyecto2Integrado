@@ -70,4 +70,18 @@ public class modelo_detallecrediticio {
     public void setFechaNow(){
           fechaDetalle = fechaDc();
       }
+    public int Res(){
+        return Reseña;
+    }
+    public String Rese(){
+        String muestra;
+        if(Res()==1){
+            muestra="aprobado";
+        }else if (Res()==2){
+            muestra="desaprobado";
+        }else{
+            muestra="Pendiente";
+        }
+        return muestra;
+    }
 }
