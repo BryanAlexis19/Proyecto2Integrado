@@ -22,6 +22,7 @@ public class Validacion extends javax.swing.JFrame {
         initComponents();
         clistado();
         Dlistado();
+        RListado();
         ComboElegir.setEnabled(false);
     }
     
@@ -51,7 +52,30 @@ public class Validacion extends javax.swing.JFrame {
             dt.addRow(v);
         }
     }
-
+    void RListado(){
+        DefaultTableModel dt = (DefaultTableModel)Tabla3.getModel();
+        dt.setRowCount(0);
+        for(modelo_detallecrediticio x:Dt.ListaDT()){
+            Object v[] = {x.getIdDocumentacion(),x.Rese()};
+            dt.addRow(v);
+        }
+    }
+    void filtrar(String cad){
+        DefaultTableModel dt=(DefaultTableModel)tabla1.getModel();
+            dt.setRowCount(0);
+            for(modelo_cliente x:Dt.filtraApe(cad)){
+                Object v[]={x.getCip(),x.getNombre(),x.getApellido()};
+                dt.addRow(v);
+            }
+        }
+    void filtrar2(int cad){
+        DefaultTableModel dt=(DefaultTableModel)Tabla3.getModel();
+            dt.setRowCount(0);
+            for(modelo_detallecrediticio x:Dt.filtraid(cad)){
+                Object v[]={x.getIdDocumentacion(),x.Rese()};
+                dt.addRow(v);
+            }
+        }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -70,6 +94,12 @@ public class Validacion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtidDocumentacion = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtFiltrar = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Tabla3 = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        txtRevi = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,13 +128,13 @@ public class Validacion extends javax.swing.JFrame {
 
         tabla2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "idDocumentacion", "TipoDocumentacion", "Ubicacion", "Cip", "------------"
+                "idDocumentacion", "TipoDocumentacion", "Ubicacion", "Cip"
             }
         ));
         tabla2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -136,6 +166,35 @@ public class Validacion extends javax.swing.JFrame {
 
         jLabel3.setText("IdDocumentacion:");
 
+        jLabel4.setText("Filtrar:");
+
+        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFiltrarKeyReleased(evt);
+            }
+        });
+
+        Tabla3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "IdDocumentacion", "Reseña"
+            }
+        ));
+        jScrollPane3.setViewportView(Tabla3);
+
+        jLabel5.setText("Revision por idDocumentacion:");
+
+        txtRevi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtReviKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,10 +209,19 @@ public class Validacion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txtFiltrar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtRevi, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(86, 86, 86)))
@@ -179,15 +247,29 @@ public class Validacion extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(ComboElegir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(ComboElegir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel3))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtRevi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtidDocumentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRespuestaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtidDocumentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnRespuestaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                     .addComponent(jLabel2))
                 .addGap(50, 50, 50))
         );
@@ -273,6 +355,14 @@ public class Validacion extends javax.swing.JFrame {
         txtidDocumentacion.setText(tabla2.getValueAt(fila, 0).toString());
         ComboElegir.setEnabled(true);
     }//GEN-LAST:event_tabla2MouseClicked
+
+    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
+        filtrar(txtFiltrar.getText());
+    }//GEN-LAST:event_txtFiltrarKeyReleased
+
+    private void txtReviKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReviKeyReleased
+        filtrar2(Integer.parseInt(txtRevi.getText()));
+    }//GEN-LAST:event_txtReviKeyReleased
     void verD(String cod){
         DefaultTableModel dt=(DefaultTableModel)tabla2.getModel();
             dt.setRowCount(0);
@@ -319,18 +409,24 @@ public class Validacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboElegir;
+    private javax.swing.JTable Tabla3;
     private javax.swing.JButton btnRespuestaCredito;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tabla1;
     private javax.swing.JTable tabla2;
+    private javax.swing.JTextField txtFiltrar;
+    private javax.swing.JTextField txtRevi;
     private javax.swing.JTextField txtidDocumentacion;
     // End of variables declaration//GEN-END:variables
 }
