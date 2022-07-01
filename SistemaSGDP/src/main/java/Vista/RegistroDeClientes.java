@@ -7,6 +7,9 @@ import Controlador.controlador_usuario;
 
 import Modelo.*;
 import java.awt.Toolkit;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
@@ -29,7 +32,12 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         initComponents();
         txtDnic.enable(false);
     }
-
+    
+     public static boolean isEmpty(Collection<?> collection) {
+        return collection == null || collection.isEmpty();
+    }
+     
+     
     
     private void MostrarClientes(){
         controlador_cliente ctc =new controlador_cliente();
@@ -48,6 +56,14 @@ public class RegistroDeClientes extends javax.swing.JFrame {
             }else{
                 rbViudo.setSelected(true);
             }
+        }
+        
+        //-------------------------------------------------
+        boolean isEmpty = isEmpty(ctc.BuscarCliente(mc));
+        if (isEmpty) {
+            JOptionPane.showMessageDialog(null, "Cliente no existe");
+        } else {
+            
         }
         
     }
