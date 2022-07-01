@@ -58,7 +58,7 @@ public class  controlador_detallecrediticio implements Interface.interfaz_detall
         List<modelo_detallecrediticio> ListaDT = new ArrayList();
        try{
        Connection cn = Conexion.getConnection();
-       String sql = "SELECT idCredito, Reseña, idUsuario,idDocumentacion, fecha FROM detallecredito";
+       String sql = "SELECT idCredito, Reseña, idUsuario,idDocumentacion, fechaDetalle FROM detallecredito";
        PreparedStatement st = cn.prepareStatement(sql);
        ResultSet rs= st.executeQuery();
        while (rs.next()){
@@ -78,7 +78,7 @@ public class  controlador_detallecrediticio implements Interface.interfaz_detall
         List<modelo_detallecrediticio> lista=new  ArrayList();
             try{
             Connection cn=Conexion.getConnection();
-            String sql="SELECT idCredito, Reseña, idUsuario,idDocumentacion, fecha FROM detallecredito where idDocumentacion like ?";
+            String sql="SELECT idCredito, Reseña, idUsuario,idDocumentacion, fechaDetalle FROM detallecredito where idDocumentacion like ?";
                 PreparedStatement st=cn.prepareStatement(sql);
                 st.setString(1,id+"%");
                 ResultSet rs=st.executeQuery();

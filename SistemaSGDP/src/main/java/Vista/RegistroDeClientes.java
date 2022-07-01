@@ -53,8 +53,10 @@ public class RegistroDeClientes extends javax.swing.JFrame {
                 rbSolter.setSelected(true);
             }else if(modCli.getEstado()==2){
                 rbCasado.setSelected(true);
+                 txtDnic.enable(true);
             }else{
                 rbViudo.setSelected(true);
+                 txtDnic.enable(true);
             }
         }
         
@@ -254,6 +256,12 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("DNI del conyugue");
 
+        txtDnic.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDnicKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelCLayout = new javax.swing.GroupLayout(PanelC);
         PanelC.setLayout(PanelCLayout);
         PanelCLayout.setHorizontalGroup(
@@ -388,7 +396,6 @@ public class RegistroDeClientes extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -454,7 +461,9 @@ public class RegistroDeClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Secundario q = new Secundario(idUsuario);
+                 q.setVisible(true);
+                 this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtCipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCipActionPerformed
@@ -503,8 +512,16 @@ public class RegistroDeClientes extends javax.swing.JFrame {
             m.actualizarC(mc);
             //Ejecutar el ingreso del seguiento
             con_seg.ingresoSeg(seguim);
-
-        } catch (Exception e) {
+             txtCip.setText("");
+            txtDni.setText("");
+            txtNombre.setText("");
+            txtApellido.setText("");
+            txtGrado.setText("");
+            rbSolter.setSelected(false);
+            rbCasado.setSelected(false);
+            rbViudo.setSelected(false);
+            JOptionPane.showMessageDialog(null, "Se actualizaron los datos correctamente");
+       } catch (Exception e) {
             System.out.println("Error > "+ e.toString());
         }
         
@@ -556,6 +573,13 @@ public class RegistroDeClientes extends javax.swing.JFrame {
             MostrarClientes();
         }        
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtDnicKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDnicKeyTyped
+        if(txtDnic.getText().length() >= 8){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_txtDnicKeyTyped
 
     /**
      * @param args the command line arguments
