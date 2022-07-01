@@ -22,6 +22,7 @@ public class Validacion extends javax.swing.JFrame {
         initComponents();
         clistado();
         Dlistado();
+        filtrar("");
         RListado();
         ComboElegir.setEnabled(false);
     }
@@ -323,6 +324,7 @@ public class Validacion extends javax.swing.JFrame {
             mc.setFechaNow();            
             //Ejecutar el ingreso desde el controlador cliente
             Dt.ingresoDet(mc);
+            JOptionPane.showMessageDialog(null, "Se ha subido el reporte");
             } catch (Exception e) {
             System.out.println("Error > "+ e.toString());
             }
@@ -336,6 +338,7 @@ public class Validacion extends javax.swing.JFrame {
             mc.setFechaNow();            
             //Ejecutar el ingreso desde el controlador cliente
             Dt.ingresoDet(mc);
+            JOptionPane.showMessageDialog(null, "Se ha subido el reporte");
             } catch (Exception e) {
             System.out.println("Error > "+ e.toString());
             }
