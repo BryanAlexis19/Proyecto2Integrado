@@ -60,7 +60,6 @@ public class RegistroDeClientes extends javax.swing.JFrame {
             }
         }
         
-        //-------------------------------------------------
         boolean isEmpty = isEmpty(ctc.BuscarCliente(mc));
         if (isEmpty) {
             JOptionPane.showMessageDialog(null, "Cliente no existe");
@@ -451,13 +450,7 @@ public class RegistroDeClientes extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error > "+ e.toString());
         }
-        
-            
-                    
-            
-                       
-
-        
+   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

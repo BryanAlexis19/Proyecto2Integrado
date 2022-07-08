@@ -154,9 +154,7 @@ public class controlador_cliente implements Interface.interfaz_cliente{
             ps.setString(6, ac.getDni_c());
             ps.setInt(7, ac.getCip());
             salida = ps.executeUpdate();
-            
-                    
-                    
+          
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
