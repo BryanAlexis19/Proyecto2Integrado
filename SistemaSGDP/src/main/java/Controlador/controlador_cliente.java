@@ -111,7 +111,7 @@ public class controlador_cliente implements Interface.interfaz_cliente{
         List<modelo_documentacion> lista=new  ArrayList();
             try{
             Connection cn=Conexion.getConnection();
-            String sql="select idDocumentacion, TipoDocumentacion, Ubicacion, CIP from Documentacion where CIP=?";
+            String sql="select idDocumentacion, TipoDocumentacion, Ubicacion, CIP from documentacion where CIP=?";
                 PreparedStatement st=cn.prepareStatement(sql);
                 st.setString(1,an);
                 ResultSet rs=st.executeQuery();

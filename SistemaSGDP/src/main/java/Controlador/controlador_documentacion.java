@@ -3,14 +3,21 @@ package Controlador;
 
 import Conexion.Conexion;
 import Modelo.modelo_documentacion;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import java.io.ByteArrayInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class controlador_documentacion implements Interface.interfaz_documentacion {
+    private Conexion con = new Conexion();
     private Connection cn = Conexion.getConnection();
     private String sql="";
     
@@ -89,6 +96,40 @@ public class controlador_documentacion implements Interface.interfaz_documentaci
     @Override
     public boolean eliminarDoc(modelo_documentacion docum) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public void ejectuar_archivoPDF(modelo_documentacion doc){
+        String sql2;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        byte[] b = null;
+        try{
+           sql2 = "SELECT ubicacion FROM documentacion WHERE idDocumentacion = ?;";
+           ps = con.getConnection().prepareStatement(sql2);
+           ps.setInt(1, doc.getIdDocumentacion());
+           rs = ps.executeQuery();
+           while(rs.next()){
+               b = rs.getBytes(1);
+           }
+           InputStream bos = new ByteArrayInputStream(b);
+           
+           int tamanoInput = bos.available();
+           byte[] datosPDF = new byte[tamanoInput];
+           bos.read(datosPDF, 0, tamanoInput);
+           
+           OutputStream out = new FileOutputStream("new.pdf");
+           out.write(datosPDF);
+           
+           //abrir el archivo
+           out.close();
+           bos.close();
+           ps.close();
+           rs.close();
+           con.desconectar();
+           
+        } catch (Exception e){
+            JOptionPane.showConfirmDialog(null, e);
+        }
     }
     
 }
