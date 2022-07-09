@@ -3,7 +3,16 @@ package Vista;
 import Controlador.*;
 import javax.swing.table.DefaultTableModel;
 import Modelo.*;
+import TableHelper.imgTabla;
+import java.awt.Desktop;
+import java.awt.Image;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 
 public class Validacion extends javax.swing.JFrame {
@@ -13,6 +22,7 @@ public class Validacion extends javax.swing.JFrame {
     controlador_detallecrediticio Dt=new controlador_detallecrediticio();
     int idUsuario;
     int Resena=0;
+    int id = -1;
     public Validacion() {
         initComponents();
     }
@@ -20,8 +30,7 @@ public class Validacion extends javax.swing.JFrame {
     Validacion(int idUsuario) {
         this.idUsuario = idUsuario;
         initComponents();
-        clistado();
-        Dlistado();
+        clistado();        
         filtrar("");
         RListado();
         ComboElegir.setEnabled(false);
@@ -52,6 +61,8 @@ public class Validacion extends javax.swing.JFrame {
             Object v[] = {x.getIdDocumentacion(),x.getIipoDocumentacion(),x.getUbicacion(),x.getCip()};
             dt.addRow(v);
         }
+        
+        
     }
     void RListado(){
         DefaultTableModel dt = (DefaultTableModel)Tabla3.getModel();
@@ -77,6 +88,85 @@ public class Validacion extends javax.swing.JFrame {
                 dt.addRow(v);
             }
         }
+    
+    public void visualizar_pdf(JTable tabla, String cod) {
+        tabla.setDefaultRenderer(Object.class, new imgTabla());
+        DefaultTableModel dt = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        
+        dt.addColumn("idDocumentacion");
+        dt.addColumn("iipoDocumentacion");
+        dt.addColumn("ubicacion");
+        
+        ImageIcon icono = null;
+        if (get_Image("/com/images/pdf2.png") != null) {
+            icono = new ImageIcon(get_Image("/com/images/pdf2.png"));
+        }
+        
+        modelo_documentacion md = new modelo_documentacion();
+        List<modelo_documentacion> list = ci.filtrarArt(cod);
+        dt.setRowCount(0);
+        tabla.setModel(dt);
+        if(!list.isEmpty()){
+            for(int i=0; i<list.size(); i++){
+            Object fila[] = new Object[3];
+            md = list.get(i);
+            fila[0] = md.getIdDocumentacion();
+            fila[1] = getTipoDoc(md.getIipoDocumentacion());            
+            if(md.getUbicacion() != null){
+                fila[2] = new JButton(icono);
+            }else {
+                fila[2] = new JButton("Vacio!");
+            }
+            
+            dt.addRow(fila);
+            }
+            tabla.setModel(dt);
+            tabla.setRowHeight(48);
+        }
+    }
+    
+    public Image get_Image(String ruta){
+        try {
+            ImageIcon imageIcon = new ImageIcon(getClass().getResource(ruta));
+            Image mainIcon = imageIcon.getImage();
+            return mainIcon;
+        }catch (Exception e){
+            System.out.println("Error en get_Image => " + e.getMessage());
+        }
+        return null;
+    }
+    
+    public String getTipoDoc(int tipoDoc){
+        String nombreDoc;
+        switch(tipoDoc){
+            case 1:
+                nombreDoc= "Copia de DNI"; break;
+            case 2:
+                nombreDoc = "Copia de CIP"; break;
+            case 3:
+                nombreDoc = "Nro de Cuenta"; break;
+            case 4:
+                nombreDoc= "Comprobantes de pago"; break;
+            case 5:
+                nombreDoc= "Historial Crediticio actualizado"; break;
+            case 6:
+                nombreDoc = "Minuta"; break;
+            case 7:
+                nombreDoc = "Actta de matrimonio"; break;
+            case 8:
+                nombreDoc = "Copia DNI conyugue"; break;
+            case 9:
+                nombreDoc = "Reporte Infocorp"; break;
+            default: 
+                nombreDoc = "Otros";
+        }
+        return nombreDoc;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -129,13 +219,13 @@ public class Validacion extends javax.swing.JFrame {
 
         tabla2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "idDocumentacion", "TipoDocumentacion", "Ubicacion", "Cip"
+                "ID", "Tipo Documento", "Archivo"
             }
         ));
         tabla2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,6 +234,9 @@ public class Validacion extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tabla2);
+        if (tabla2.getColumnModel().getColumnCount() > 0) {
+            tabla2.getColumnModel().getColumn(0).setPreferredWidth(20);
+        }
 
         ComboElegir.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir", "Aprobado", "Desaprobado" }));
 
@@ -215,7 +308,7 @@ public class Validacion extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addComponent(txtFiltrar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,7 +375,7 @@ public class Validacion extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,6 +450,33 @@ public class Validacion extends javax.swing.JFrame {
         int fila=tabla2.getSelectedRow();//fila seleccionada
         txtidDocumentacion.setText(tabla2.getValueAt(fila, 0).toString());
         ComboElegir.setEnabled(true);
+        
+        //---------------------------------------------------------------
+        int column = tabla2.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY() / tabla2.getRowHeight();
+        if(row < tabla2.getRowCount() && row >= 0 && column <tabla2.getColumnCount() && column >= 0){
+            id = (int)tabla2.getValueAt(row, 0);
+            Object value = tabla2.getValueAt(row, column);
+            if(value instanceof JButton){
+                ((JButton) value).doClick();
+                JButton boton = (JButton) value;
+                
+                if(boton.getText().equals("Vacio")) {
+                    JOptionPane.showMessageDialog(null, "No hay archivo");
+                }else {
+                    modelo_documentacion md = new modelo_documentacion();
+                    md.setIdDocumentacion(id);
+                    dos.ejectuar_archivoPDF(md);
+                    try {
+                        Desktop.getDesktop().open(new File("new.pdf"));
+                    } catch (Exception ex){
+                        System.out.println("Error: " + ex.getMessage());
+                    }
+                }
+            } else {
+                System.out.println("You've fallen into else statement! ");                
+            }
+        }
     }//GEN-LAST:event_tabla2MouseClicked
 
     private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
@@ -367,13 +487,14 @@ public class Validacion extends javax.swing.JFrame {
         filtrar2(Integer.parseInt(txtRevi.getText()));
     }//GEN-LAST:event_txtReviKeyReleased
     void verD(String cod){
-        DefaultTableModel dt=(DefaultTableModel)tabla2.getModel();
+        /*DefaultTableModel dt=(DefaultTableModel)tabla2.getModel();
             dt.setRowCount(0);
-            double sm=0;
+            //double sm=0;
             for(modelo_documentacion x:ci.filtrarArt(cod)){
                 Object v[]={x.getIdDocumentacion(),x.getIipoDocumentacion(),x.getUbicacion(),x.getCip()};
                 dt.addRow(v);
-            }
+            } */
+        visualizar_pdf(tabla2, cod);
     }
     /**
      * @param args the command line arguments
