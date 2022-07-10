@@ -66,7 +66,7 @@ public class Secundario extends javax.swing.JFrame {
                 btnVerRegistroActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 210, 50));
+        jPanel1.add(btnVerRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 210, 50));
 
         btnRegistroDocumentacion.setBackground(new java.awt.Color(0, 204, 204));
         btnRegistroDocumentacion.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
@@ -78,12 +78,12 @@ public class Secundario extends javax.swing.JFrame {
                 btnRegistroDocumentacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistroDocumentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 210, 50));
+        jPanel1.add(btnRegistroDocumentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 210, 50));
 
         jLabel3.setFont(new java.awt.Font("Unispace", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ELIJA LA FUNCIÓN A REALIZAR");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
 
         btnRegistroC.setBackground(new java.awt.Color(0, 204, 204));
         btnRegistroC.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
@@ -96,11 +96,11 @@ public class Secundario extends javax.swing.JFrame {
                 btnRegistroCActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistroC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 210, 50));
+        jPanel1.add(btnRegistroC, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 210, 50));
 
         btnCerrar.setBackground(new java.awt.Color(204, 204, 204));
         btnCerrar.setFont(new java.awt.Font("Futura Bk BT", 1, 14)); // NOI18N
-        btnCerrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\CerrarSesion.png")); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/CerrarSesion.png"))); // NOI18N
         btnCerrar.setText("Cerrar sesión");
         btnCerrar.setToolTipText("");
         btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -113,9 +113,9 @@ public class Secundario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 160, 50));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 350, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 350, 20));
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Salida.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Salida.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -128,7 +128,7 @@ public class Secundario extends javax.swing.JFrame {
         jLabel2.setOpaque(true);
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 500, 350));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Fondo.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Fondo.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
