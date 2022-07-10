@@ -131,7 +131,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 30, 30));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 30, 30));
 
         panelCliente.setBackground(new java.awt.Color(0, 153, 153));
         panelCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -269,6 +269,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         panelDocumento.setBackground(new java.awt.Color(0, 153, 153));
         panelDocumento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        lblTipo_docum.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblTipo_docum.setForeground(new java.awt.Color(255, 255, 255));
         lblTipo_docum.setText("Tipo de Documento:");
 
@@ -279,6 +280,7 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
             }
         });
 
+        lblUbica_docum.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblUbica_docum.setForeground(new java.awt.Color(255, 255, 255));
         lblUbica_docum.setText("Ubicacion de documento");
 
@@ -411,13 +413,13 @@ public class Vista_RegistroDocumentario extends javax.swing.JFrame {
         lblTitulo_Docum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblTitulo_Docum.setOpaque(true);
         jPanel2.add(lblTitulo_Docum, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, 30));
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 590));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 960, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 968, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
