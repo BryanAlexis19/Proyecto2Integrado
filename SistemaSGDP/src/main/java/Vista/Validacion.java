@@ -193,7 +193,6 @@ public class Validacion extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -306,7 +305,7 @@ public class Validacion extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                                     .addComponent(jLabel4)
                                     .addComponent(txtFiltrar))
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,11 +365,6 @@ public class Validacion extends javax.swing.JFrame {
         );
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Salida.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -410,7 +404,6 @@ public class Validacion extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRespuestaCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespuestaCreditoActionPerformed
@@ -494,10 +487,6 @@ public class Validacion extends javax.swing.JFrame {
     private void txtReviKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReviKeyReleased
         filtrar2(Integer.parseInt(txtRevi.getText()));
     }//GEN-LAST:event_txtReviKeyReleased
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
     void verD(String cod){
         /*DefaultTableModel dt=(DefaultTableModel)tabla2.getModel();
             dt.setRowCount(0);
