@@ -103,8 +103,8 @@ public class Validacion extends javax.swing.JFrame {
         dt.addColumn("ubicacion");
         
         ImageIcon icono = null;
-        if (get_Image("/com/images/pdf2.png") != null) {
-            icono = new ImageIcon(get_Image("/com/images/pdf2.png"));
+        if (get_Image("/com.images/pdf2.png") != null) {
+            icono = new ImageIcon(get_Image("/com.images/pdf2.png"));
         }
         
         modelo_documentacion md = new modelo_documentacion();
