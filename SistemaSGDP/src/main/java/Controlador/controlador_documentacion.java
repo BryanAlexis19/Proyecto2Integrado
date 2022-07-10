@@ -92,11 +92,6 @@ public class controlador_documentacion implements Interface.interfaz_documentaci
             return false;
         }
     }
-
-    @Override
-    public boolean eliminarDoc(modelo_documentacion docum) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
     public void ejectuar_archivoPDF(modelo_documentacion doc){
         String sql2;
