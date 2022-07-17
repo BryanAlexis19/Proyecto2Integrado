@@ -59,6 +59,7 @@ public class Secundario extends javax.swing.JFrame {
         btnVerRegistro.setBackground(new java.awt.Color(0, 204, 204));
         btnVerRegistro.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
         btnVerRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/regCl.png"))); // NOI18N
         btnVerRegistro.setText("Ver registro de clientes");
         btnVerRegistro.setBorder(null);
         btnVerRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +72,7 @@ public class Secundario extends javax.swing.JFrame {
         btnRegistroDocumentacion.setBackground(new java.awt.Color(0, 204, 204));
         btnRegistroDocumentacion.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
         btnRegistroDocumentacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistroDocumentacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/docs.png"))); // NOI18N
         btnRegistroDocumentacion.setText("Registro de documentación");
         btnRegistroDocumentacion.setBorder(null);
         btnRegistroDocumentacion.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +80,7 @@ public class Secundario extends javax.swing.JFrame {
                 btnRegistroDocumentacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistroDocumentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 210, 50));
+        jPanel1.add(btnRegistroDocumentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 240, 50));
 
         jLabel3.setFont(new java.awt.Font("Unispace", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,6 +90,7 @@ public class Secundario extends javax.swing.JFrame {
         btnRegistroC.setBackground(new java.awt.Color(0, 204, 204));
         btnRegistroC.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
         btnRegistroC.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistroC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/log.png"))); // NOI18N
         btnRegistroC.setText("Registro Cliente");
         btnRegistroC.setToolTipText("");
         btnRegistroC.setBorder(null);
@@ -100,7 +103,7 @@ public class Secundario extends javax.swing.JFrame {
 
         btnCerrar.setBackground(new java.awt.Color(204, 204, 204));
         btnCerrar.setFont(new java.awt.Font("Futura Bk BT", 1, 14)); // NOI18N
-        btnCerrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\CerrarSesion.png")); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/CerrarSesion.png"))); // NOI18N
         btnCerrar.setText("Cerrar sesión");
         btnCerrar.setToolTipText("");
         btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -115,7 +118,7 @@ public class Secundario extends javax.swing.JFrame {
         jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 160, 50));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 350, 20));
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Salida.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Salida.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -128,7 +131,7 @@ public class Secundario extends javax.swing.JFrame {
         jLabel2.setOpaque(true);
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 500, 350));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Fondo.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Fondo.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
