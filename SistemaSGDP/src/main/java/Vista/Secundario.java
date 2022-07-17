@@ -116,6 +116,7 @@ public class Secundario extends javax.swing.JFrame {
         jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 180, 50));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 350, 20));
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Salida.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);

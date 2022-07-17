@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class Conexion {
     static String bd1 = "fovipol_db";
-    //static String bd1 = "fovipol_db";
+    //static String bd1 = "fovipol_db2";
     static String url1= "jdbc:mysql://localhost:3306/";
     static String user1="root";
     static String password1 = "";
@@ -23,7 +23,7 @@ public class Conexion {
         
         try { 
             Class.forName("com.mysql.cj.jdbc.Driver");
-           // String url= "jdbc:mysql://localhost:3306/fovipol_db2";
+            //String url= "jdbc:mysql://localhost:3306/fovipol_db2";
             String url= "jdbc:mysql://localhost:3306/fovipol_db";
             String user="root";
              String password = "";

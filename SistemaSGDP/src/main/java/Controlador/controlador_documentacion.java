@@ -3,11 +3,9 @@ package Controlador;
 
 import Conexion.Conexion;
 import Modelo.modelo_documentacion;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -77,10 +75,10 @@ public class controlador_documentacion implements Interface.interfaz_documentaci
                 + "WHERE idDocumentacion=?";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setBytes(1,docum.getUbicacion());
-            pst.setInt(2, docum.getCip());
-            pst.setInt(3, docum.getIdDocumentacion());
-            pst.setInt(4, docum.getIipoDocumentacion());
+            pst.setInt(1,docum.getIipoDocumentacion());
+            pst.setBytes(2,docum.getUbicacion());
+            pst.setInt(3,docum.getCip());            
+            pst.setInt(4,docum.getIdDocumentacion());
             n=pst.executeUpdate();
             if(n!=0){
                 return true;
