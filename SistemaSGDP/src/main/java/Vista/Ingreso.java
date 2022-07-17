@@ -164,45 +164,42 @@ public class Ingreso extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        controlador_usuario ct = new controlador_usuario();
-        modelo_usuario mu = new modelo_usuario();
-        
-        String Pass= new String (txtPassword.getPassword());
-        
-          
-       if (!txtUsuario.getText().equals("") && !Pass.equals("")){
-           
-             mu.setUsuario(txtUsuario.getText());
-             mu.setContraseña(Pass);
-             
-         
-           if(ct.login(mu)){
-               if(mu.getTipo() == 1){
-                 //System.out.println("Id_usuario_enVista: " + mu.getId_usuario());                 
-                 Secundario q = new Secundario(mu.getId_usuario());
-                 q.setVisible(true);
-                 this.setVisible(false);
-                 
-               } else {
-                 int usu=mu.getId_usuario();
-                 Validacion q = new Validacion(usu);
-                 q.setVisible(true);
-                 this.dispose();   
-               }
-           }else {
-               JOptionPane.showMessageDialog(this,"Datos incorrectos");
-           }
-          
-        }else{
-           JOptionPane.showMessageDialog(this,"Debe ingresar sus datos");
-       }
-        
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        controlador_usuario ct = new controlador_usuario();
+        modelo_usuario mu = new modelo_usuario();
+
+        String Pass= new String (txtPassword.getPassword());
+
+        if (!txtUsuario.getText().equals("") && !Pass.equals("")){
+
+            mu.setUsuario(txtUsuario.getText());
+            mu.setContraseña(Pass);
+
+            if(ct.login(mu)){
+                if(mu.getTipo() == 1){
+                    //System.out.println("Id_usuario_enVista: " + mu.getId_usuario());
+                    Secundario q = new Secundario(mu.getId_usuario());
+                    q.setVisible(true);
+                    this.setVisible(false);
+
+                } else {
+                    int usu=mu.getId_usuario();
+                    Validacion q = new Validacion(usu);
+                    q.setVisible(true);
+                    this.dispose();
+                }
+            }else {
+                JOptionPane.showMessageDialog(this,"Datos incorrectos");
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(this,"Debe ingresar sus datos");
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
