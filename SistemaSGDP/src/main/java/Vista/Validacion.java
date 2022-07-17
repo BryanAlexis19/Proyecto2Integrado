@@ -254,7 +254,12 @@ public class Validacion extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PANEL DE VALIDACION CREDITICIA");
 
-        jButton2.setText("X");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Salida.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Reseña:");
 
@@ -486,6 +491,10 @@ public class Validacion extends javax.swing.JFrame {
     private void txtReviKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReviKeyReleased
         filtrar2(Integer.parseInt(txtRevi.getText()));
     }//GEN-LAST:event_txtReviKeyReleased
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+            dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
     void verD(String cod){
         /*DefaultTableModel dt=(DefaultTableModel)tabla2.getModel();
             dt.setRowCount(0);

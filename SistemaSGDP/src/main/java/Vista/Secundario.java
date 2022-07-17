@@ -16,6 +16,7 @@ public class Secundario extends javax.swing.JFrame {
     public Secundario() {
         initComponents();
     }
+    
     public Secundario(int idUsuario) {
         this.idUsuario = idUsuario;
         initComponents();
@@ -100,7 +101,7 @@ public class Secundario extends javax.swing.JFrame {
 
         btnCerrar.setBackground(new java.awt.Color(204, 204, 204));
         btnCerrar.setFont(new java.awt.Font("Futura Bk BT", 1, 14)); // NOI18N
-        btnCerrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\CerrarSesion.png")); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salir.png"))); // NOI18N
         btnCerrar.setText("Cerrar sesión");
         btnCerrar.setToolTipText("");
         btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -112,10 +113,9 @@ public class Secundario extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 160, 50));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 180, 50));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 350, 20));
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Salida.png")); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -127,8 +127,6 @@ public class Secundario extends javax.swing.JFrame {
         jLabel2.setToolTipText("");
         jLabel2.setOpaque(true);
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 500, 350));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Proyecto2\\Proyecto2Integrado\\SistemaSGDP\\src\\main\\java\\Imagenes\\Fondo.jpg")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,7 +167,7 @@ public class Secundario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroCActionPerformed
 
     private void btnVerRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerRegistroActionPerformed
-                 VerClientes q = new VerClientes();
+                 VerClientes q = new VerClientes(idUsuario);
                  q.setVisible(true);
                  this.dispose();  
     }//GEN-LAST:event_btnVerRegistroActionPerformed
