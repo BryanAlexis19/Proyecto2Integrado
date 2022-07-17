@@ -77,10 +77,10 @@ public class controlador_documentacion implements Interface.interfaz_documentaci
                 + "WHERE idDocumentacion=?";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, docum.getIipoDocumentacion());
-            pst.setBytes(2,docum.getUbicacion());
-            pst.setInt(3, docum.getCip());
-            pst.setInt(4, docum.getIdDocumentacion());
+            pst.setBytes(1,docum.getUbicacion());
+            pst.setInt(2, docum.getCip());
+            pst.setInt(3, docum.getIdDocumentacion());
+            pst.setInt(4, docum.getIipoDocumentacion());
             n=pst.executeUpdate();
             if(n!=0){
                 return true;
